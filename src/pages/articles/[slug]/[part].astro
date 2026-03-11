@@ -65,7 +65,8 @@ if (relatedArticles.length < 3) {
 
       <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
 
-      {part === totalParts && (
+      {/* 広告スペース336×280：現時点では非表示 */}
+      {false && part === totalParts && (
         <AdPlaceholder size="medium" />
       )}
 
