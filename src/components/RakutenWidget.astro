@@ -1,0 +1,34 @@
+---
+import { affiliate } from '../config/monetization';
+
+interface Props {
+  size?: '468x160' | '336x280' | '728x90';
+  theme?: 'gray' | 'white';
+}
+
+const { size = '468x160', theme = 'gray' } = Astro.props;
+
+const showWidget = affiliate.rakutenId;
+---
+{showWidget && (
+  <div class="rakuten-widget-wrapper">
+    <p class="rakuten-widget-label">楽天市場で関連商品を探す</p>
+    <script is:inline>
+      {`rakuten_design="slide";rakuten_affiliateId="${affiliate.rakutenId}";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="${size}";rakuten_target="_blank";rakuten_theme="${theme}";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="${Date.now()}";`}
+    </script>
+    <script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
+  </div>
+)}
+
+<style>
+  .rakuten-widget-wrapper {
+    margin: 2rem 0;
+    padding: 1rem 0;
+  }
+
+  .rakuten-widget-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0 0 0.75rem 0;
+  }
+</style>

@@ -4,6 +4,7 @@ import { getCollection, render } from 'astro:content';
 import ArticlePagination from '../../../components/ArticlePagination.astro';
 import AdPlaceholder from '../../../components/AdPlaceholder.astro';
 import AffiliatePlaceholder from '../../../components/AffiliatePlaceholder.astro';
+import RakutenWidget from '../../../components/RakutenWidget.astro';
 
 export async function getStaticPaths() {
   const allArticles = await getCollection('articles');
@@ -58,6 +59,7 @@ if (relatedArticles.length < 3) {
       {part === totalParts && (
         <>
           <AffiliatePlaceholder title="関連商品" products={recommendedProducts} items={5} />
+          <RakutenWidget size="468x160" />
           <AdPlaceholder size="medium" />
         </>
       )}

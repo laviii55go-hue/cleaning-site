@@ -17,8 +17,11 @@ export const adsense = {
   },
 };
 
-// 楽天アフィリエイト（記事のrecommendedProductsで個別設定、ここは共通設定用）
+// 楽天アフィリエイト
+const rakutenAffiliateId = String(import.meta.env.PUBLIC_RAKUTEN_AFFILIATE_ID ?? '').trim();
+
 export const affiliate = {
-  // 楽天アフィリエイトの規約表示が必要な場合
   disclosureRequired: true,
+  // 楽天ウィジェット用アフィリエイトID
+  rakutenId: rakutenAffiliateId,
 };
