@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { getPlaceInfo, getStainInfo, getSeasonInfo, getPlaceUrl, getStainUrl, getSeasonUrl } from '../../config/categories';
 
 const allArticles = await getCollection('articles');
 const articlesBySlug = new Map<string, typeof allArticles[0]>();
@@ -21,16 +22,25 @@ const articles = Array.from(articlesBySlug.values())
     <div class="article-list">
       {articles.map((entry) => (
         <article class="article-item">
-          <a href={`/articles/${entry.data.slug}/1`}>
+          <a href={`/articles/${entry.data.slug}/1`} class="article-link">
             <h2 class="article-title">{entry.data.title}</h2>
             <p class="article-desc">{entry.data.description}</p>
-            <div class="article-meta">
-              <span>{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
-              {entry.data.place && <span class="tag">{entry.data.place}</span>}
-              {entry.data.stain && <span class="tag">{entry.data.stain}</span>}
-              {entry.data.season && <span class="tag">{entry.data.season}</span>}
-            </div>
           </a>
+          <div class="article-meta">
+            <span>{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+            {entry.data.place && (() => {
+              const info = getPlaceInfo(entry.data.place!);
+              return info ? <a href={getPlaceUrl(entry.data.place!)} class="tag tag-link">{info.name}</a> : <span class="tag">{entry.data.place}</span>;
+            })()}
+            {entry.data.stain && (() => {
+              const info = getStainInfo(entry.data.stain!);
+              return info ? <a href={getStainUrl(entry.data.stain!)} class="tag tag-link">{info.name}</a> : <span class="tag">{entry.data.stain}</span>;
+            })()}
+            {entry.data.season && (() => {
+              const info = getSeasonInfo(entry.data.season!);
+              return info ? <a href={getSeasonUrl(entry.data.season!)} class="tag tag-link">{info.name}</a> : <span class="tag">{entry.data.season}</span>;
+            })()}
+          </div>
         </article>
       ))}
     </div>
@@ -59,20 +69,23 @@ const articles = Array.from(articlesBySlug.values())
     gap: 1.5rem;
   }
 
-  .article-item a {
-    display: block;
+  .article-item {
     padding: 1.5rem;
     background: var(--color-surface);
     border-radius: var(--radius);
     border: 1px solid var(--color-border);
-    text-decoration: none !important;
-    color: var(--color-text);
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .article-item a:hover {
+  .article-item:hover {
     border-color: var(--color-primary-light);
     box-shadow: var(--shadow-hover);
+  }
+
+  .article-link {
+    display: block;
+    text-decoration: none !important;
+    color: var(--color-text);
   }
 
   .article-title {
@@ -100,5 +113,14 @@ const articles = Array.from(articlesBySlug.values())
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-size: 0.75rem;
+  }
+
+  .tag-link {
+    text-decoration: none !important;
+    color: var(--color-primary) !important;
+  }
+
+  .tag-link:hover {
+    opacity: 0.8;
   }
 </style>

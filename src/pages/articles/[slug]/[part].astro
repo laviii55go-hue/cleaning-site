@@ -4,6 +4,7 @@ import { getCollection, render } from 'astro:content';
 import ArticlePagination from '../../../components/ArticlePagination.astro';
 import AdPlaceholder from '../../../components/AdPlaceholder.astro';
 import AffiliatePlaceholder from '../../../components/AffiliatePlaceholder.astro';
+import { getPlaceInfo, getStainInfo, getSeasonInfo, getPlaceUrl, getStainUrl, getSeasonUrl } from '../../../config/categories';
 
 export async function getStaticPaths() {
   const allArticles = await getCollection('articles');
@@ -37,9 +38,18 @@ if (relatedArticles.length < 3) {
     <div class="container">
       <header class="article-header">
         <div class="article-meta">
-          {entry.data.place && <span class="tag">{entry.data.place}</span>}
-          {entry.data.stain && <span class="tag">{entry.data.stain}</span>}
-          {entry.data.season && <span class="tag">{entry.data.season}</span>}
+          {entry.data.place && (() => {
+            const info = getPlaceInfo(entry.data.place!);
+            return info ? <a href={getPlaceUrl(entry.data.place!)} class="tag tag-link">{info.name}</a> : <span class="tag">{entry.data.place}</span>;
+          })()}
+          {entry.data.stain && (() => {
+            const info = getStainInfo(entry.data.stain!);
+            return info ? <a href={getStainUrl(entry.data.stain!)} class="tag tag-link">{info.name}</a> : <span class="tag">{entry.data.stain}</span>;
+          })()}
+          {entry.data.season && (() => {
+            const info = getSeasonInfo(entry.data.season!);
+            return info ? <a href={getSeasonUrl(entry.data.season!)} class="tag tag-link">{info.name}</a> : <span class="tag">{entry.data.season}</span>;
+          })()}
           <span class="date">{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
         </div>
         <h1 class="article-title">{title}</h1>
@@ -102,6 +112,15 @@ if (relatedArticles.length < 3) {
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
     font-size: 0.8rem;
+  }
+
+  .tag-link {
+    text-decoration: none !important;
+    color: white !important;
+  }
+
+  .tag-link:hover {
+    opacity: 0.9;
   }
 
   .date {

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { places } from '../../config/categories';
 
 const allArticles = await getCollection('articles');
 const articlesBySlug = new Map<string, typeof allArticles[0]>();
@@ -9,15 +10,6 @@ for (const entry of allArticles) {
     articlesBySlug.set(entry.data.slug, entry);
   }
 }
-
-const places = [
-  { id: 'kitchen', name: 'キッチン', icon: '🍳' },
-  { id: 'bathroom', name: '浴室', icon: '🛁' },
-  { id: 'living', name: 'リビング', icon: '🛋️' },
-  { id: 'bedroom', name: '寝室', icon: '🛏️' },
-  { id: 'entrance', name: '玄関', icon: '🚪' },
-  { id: 'toilet', name: 'トイレ', icon: '🚽' },
-];
 
 const articlesByPlace = new Map<string, typeof allArticles[0][]>();
 for (const entry of articlesBySlug.values()) {
@@ -38,7 +30,7 @@ for (const entry of articlesBySlug.values()) {
       {places.map((place) => {
         const articles = articlesByPlace.get(place.id) || [];
         return (
-          <section class="place-section">
+          <section class="place-section" id={place.id}>
             <h2 class="place-name">
               <span class="place-icon">{place.icon}</span>
               {place.name}

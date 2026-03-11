@@ -1,7 +1,7 @@
 ---
 title: キッチンの水垢を落とす方法
 description: シンクや蛇口の水垢・カルキ汚れを効率的に落とす方法と、クエン酸を使った掃除のコツを解説します。
-pubDate: 2025-03-15
+pubDate: 2026-03-11
 part: 3
 totalParts: 3
 slug: kitchen-water-scale

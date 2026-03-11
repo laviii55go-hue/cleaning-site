@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { stains } from '../../config/categories';
 
 const allArticles = await getCollection('articles');
 const articlesBySlug = new Map<string, typeof allArticles[0]>();
@@ -9,14 +10,6 @@ for (const entry of allArticles) {
     articlesBySlug.set(entry.data.slug, entry);
   }
 }
-
-const stains = [
-  { id: 'oil', name: '油汚れ', icon: '🛢️' },
-  { id: 'water-scale', name: '水垢', icon: '💧' },
-  { id: 'mold', name: 'カビ', icon: '🦠' },
-  { id: 'dust', name: 'ホコリ', icon: '🌫️' },
-  { id: 'stain', name: 'シミ・汚れ', icon: '🧴' },
-];
 
 const articlesByStain = new Map<string, typeof allArticles[0][]>();
 for (const entry of articlesBySlug.values()) {
@@ -37,7 +30,7 @@ for (const entry of articlesBySlug.values()) {
       {stains.map((stain) => {
         const articles = articlesByStain.get(stain.id) || [];
         return (
-          <section class="stain-section">
+          <section class="stain-section" id={stain.id}>
             <h2 class="stain-name">
               <span class="stain-icon">{stain.icon}</span>
               {stain.name}

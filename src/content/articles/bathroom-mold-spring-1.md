@@ -1,7 +1,7 @@
 ---
 title: 春の浴室カビ対策｜梅雨前にやっておきたい予防法
 description: 春から梅雨にかけて増える浴室のカビ。効果的な予防法と、すでについてしまったカビの落とし方を解説します。
-pubDate: 2025-03-10
+pubDate: 2026-03-11
 part: 1
 totalParts: 3
 slug: bathroom-mold-spring

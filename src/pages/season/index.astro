@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { seasons } from '../../config/categories';
 
 const allArticles = await getCollection('articles');
 const articlesBySlug = new Map<string, typeof allArticles[0]>();
@@ -9,15 +10,6 @@ for (const entry of allArticles) {
     articlesBySlug.set(entry.data.slug, entry);
   }
 }
-
-const seasons = [
-  { id: 'spring', name: '春', icon: '🌸' },
-  { id: 'summer', name: '夏', icon: '☀️' },
-  { id: 'autumn', name: '秋', icon: '🍂' },
-  { id: 'winter', name: '冬', icon: '❄️' },
-  { id: 'year-end', name: '年末', icon: '🎍' },
-  { id: 'gw', name: 'GW', icon: '🌿' },
-];
 
 const articlesBySeason = new Map<string, typeof allArticles[0][]>();
 for (const entry of articlesBySlug.values()) {
@@ -38,7 +30,7 @@ for (const entry of articlesBySlug.values()) {
       {seasons.map((season) => {
         const articles = articlesBySeason.get(season.id) || [];
         return (
-          <section class="season-section">
+          <section class="season-section" id={season.id}>
             <h2 class="season-name">
               <span class="season-icon">{season.icon}</span>
               {season.name}
