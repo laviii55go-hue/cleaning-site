@@ -4,13 +4,13 @@ import { affiliate } from '../config/monetization';
 interface Props {
   size?: '468x160' | '336x280' | '728x90' | '600x200';
   theme?: 'gray' | 'white';
-  /** 楽天ジャンルID（例: 558944=掃除・洗濯用品） */
+  /** 楽天ジャンルID（例: 100656=掃除用品, 100645=洗濯用品） */
   genreId?: string;
   /** 表示タイプ: ranking=ランキング, ctsmatch=コンテンツマッチ */
   items?: 'ranking' | 'ctsmatch';
 }
 
-const { size = '468x160', theme = 'gray', genreId = '558944', items = 'ranking' } = Astro.props;
+const { size = '468x160', theme = 'gray', genreId = '100656', items = 'ranking' } = Astro.props;
 
 const showWidget = affiliate.rakutenId;
 ---
