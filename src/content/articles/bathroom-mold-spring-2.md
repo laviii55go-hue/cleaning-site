@@ -25,18 +25,6 @@ recommendedProducts:
     description: カビが生える前に。浴室の壁やパッキンに吹きかけておくだけでカビの発生を抑制。
     url: https://hb.afl.rakuten.co.jp/ichiba/51cb3ee4.45b40abc.51cb3ee5.afa5bcb0/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcogit%2F061825%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
     image: https://hbb.afl.rakuten.co.jp/hgb/51cb3ee4.45b40abc.51cb3ee5.afa5bcb0/?me_id=1191474&item_id=10001651&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fcogit%2Fcabinet%2Fpage%2F027125_0218.jpg%3F_ex%3D240x240&s=240x240&t=pict
-  - name: 重曹
-    description: 天然の洗剤。油汚れや臭い取りに。浴室掃除にも使える万能アイテム。食品グレードで安心。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb4131.b6295c4f.51cb4132.be670b71/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftsuruha%2F10162289%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb4131.b6295c4f.51cb4132.be670b71/?me_id=1274827&item_id=10096569&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ftsuruha%2Fcabinet%2Fshouhin74%2F10162289.jpg%3F_ex%3D240x240&s=240x240&t=pict
-  - name: クエン酸
-    description: 水垢取りに効果的。鏡や蛇口の白い汚れを落とす。重曹と合わせて使うとさらに効果的。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb32d9.1620bf4e.51cb32da.6057fd54/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2F561220%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb32d9.1620bf4e.51cb32da.6057fd54/?me_id=1261122&item_id=11177358&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frakuten24%2Fcabinet%2F220%2F561220.jpg%3F_ex%3D240x240&s=240x240&t=pict
-  - name: スプレーボトル
-    description: 重曹水やクエン酸水を入れて使う。霧吹きタイプで浴室の壁や床にまんべんなく吹きかけ可能。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Froomy%2Fymz21jul02h20%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?me_id=1227333&item_id=10012269&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Froomy%2Fcabinet%2F500cart_all%2F500cart_11g%2Fp5-5%2Fymz1200-ot034-0_gt01.jpg%3F_ex%3D240x240&s=240x240&t=pict
 ---
 
 ## カビの落とし方
