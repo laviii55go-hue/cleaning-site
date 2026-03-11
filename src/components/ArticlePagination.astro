@@ -1,0 +1,83 @@
+---
+interface Props {
+  slug: string;
+  currentPart: number;
+  totalParts: number;
+  title: string;
+}
+
+const { slug, currentPart, totalParts, title } = Astro.props;
+
+const prevPart = currentPart > 1 ? currentPart - 1 : null;
+const nextPart = currentPart < totalParts ? currentPart + 1 : null;
+---
+<nav class="pagination" aria-label="記事のページネーション">
+  <div class="pagination-inner">
+    {prevPart ? (
+      <a href={`/articles/${slug}/${prevPart}`} class="pagination-btn prev">
+        ← 前へ
+      </a>
+    ) : (
+      <span class="pagination-btn disabled"></span>
+    )}
+    <span class="pagination-info">
+      {currentPart} / {totalParts}
+    </span>
+    {nextPart ? (
+      <a href={`/articles/${slug}/${nextPart}`} class="pagination-btn next">
+        次へ →
+      </a>
+    ) : (
+      <span class="pagination-btn disabled"></span>
+    )}
+  </div>
+  <p class="pagination-title">{title}</p>
+</nav>
+
+<style>
+  .pagination {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .pagination-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .pagination-btn {
+    padding: 0.5rem 1rem;
+    background: var(--color-primary);
+    color: white !important;
+    border-radius: var(--radius);
+    text-decoration: none !important;
+    font-size: 0.9rem;
+  }
+
+  .pagination-btn:hover {
+    background: var(--color-primary-dark);
+    text-decoration: none !important;
+  }
+
+  .pagination-btn.disabled {
+    background: transparent;
+    visibility: hidden;
+  }
+
+  .pagination-info {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .pagination-title {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+</style>

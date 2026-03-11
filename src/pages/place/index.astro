@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const articlesBySlug = new Map<string, typeof allArticles[0]>();
+for (const entry of allArticles) {
+  if (entry.data.part === 1 && entry.data.place && !articlesBySlug.has(entry.data.slug)) {
+    articlesBySlug.set(entry.data.slug, entry);
+  }
+}
+
+const places = [
+  { id: 'kitchen', name: 'キッチン', icon: '🍳' },
+  { id: 'bathroom', name: '浴室', icon: '🛁' },
+  { id: 'living', name: 'リビング', icon: '🛋️' },
+  { id: 'bedroom', name: '寝室', icon: '🛏️' },
+  { id: 'entrance', name: '玄関', icon: '🚪' },
+  { id: 'toilet', name: 'トイレ', icon: '🚽' },
+];
+
+const articlesByPlace = new Map<string, typeof allArticles[0][]>();
+for (const entry of articlesBySlug.values()) {
+  const place = entry.data.place;
+  if (place) {
+    if (!articlesByPlace.has(place)) articlesByPlace.set(place, []);
+    articlesByPlace.get(place)!.push(entry);
+  }
+}
+---
+
+<BaseLayout title="場所で探す" description="キッチン、浴室、リビングなど場所別のお掃除方法">
+  <div class="container">
+    <h1 class="page-title">場所で探す</h1>
+    <p class="page-desc">各場所のお掃除方法・豆知識をまとめています</p>
+
+    <div class="place-grid">
+      {places.map((place) => {
+        const articles = articlesByPlace.get(place.id) || [];
+        return (
+          <section class="place-section">
+            <h2 class="place-name">
+              <span class="place-icon">{place.icon}</span>
+              {place.name}
+            </h2>
+            {articles.length > 0 ? (
+              <ul class="article-list">
+                {articles.map((entry) => (
+                  <li>
+                    <a href={`/articles/${entry.data.slug}/1`}>{entry.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="no-articles">記事はまだありません</p>
+            )}
+          </section>
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-desc {
+    color: var(--color-text-muted);
+    margin: 0 0 2rem 0;
+  }
+
+  .place-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .place-section {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+  }
+
+  .place-name {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .place-icon {
+    font-size: 1.5rem;
+  }
+
+  .article-list {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .article-list li {
+    margin: 0.5rem 0;
+  }
+
+  .no-articles {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>

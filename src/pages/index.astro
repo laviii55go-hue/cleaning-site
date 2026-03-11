@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+// 記事をslugでグループ化（各記事のパート1のみ表示）
+const articlesBySlug = new Map<string, typeof allArticles[0]>();
+for (const entry of allArticles) {
+  if (entry.data.part === 1 && !articlesBySlug.has(entry.data.slug)) {
+    articlesBySlug.set(entry.data.slug, entry);
+  }
+}
+const recentArticles = Array.from(articlesBySlug.values())
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6);
+
+// 季節コンテンツ（3月なら春）
+const month = new Date().getMonth();
+const seasonMap: Record<number, string> = {
+  0: 'winter', 1: 'winter', 2: 'spring', 3: 'spring', 4: 'spring',
+  5: 'summer', 6: 'summer', 7: 'summer', 8: 'autumn', 9: 'autumn',
+  10: 'autumn', 11: 'winter'
+};
+const currentSeason = seasonMap[month];
+const seasonalArticles = Array.from(articlesBySlug.values())
+  .filter(a => a.data.season === currentSeason)
+  .slice(0, 3);
+---
+
+<BaseLayout title="お掃除の方法・豆知識をまとめた総合サイト" description="キッチン、浴室、リビングなど各場所別、油汚れ・水垢・カビなど汚れ別、季節ごとのお掃除情報をお届けします。">
+  <div class="container">
+    <section class="hero">
+      <h1 class="hero-title">お掃除ナビ</h1>
+      <p class="hero-desc">各場所のお掃除方法・豆知識をひとつのサイトで。季節に合わせたコンテンツもお届けします。</p>
+    </section>
+
+    {seasonalArticles.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">今月の季節コンテンツ</h2>
+        <div class="card-grid">
+          {seasonalArticles.map((entry) => (
+            <a href={`/articles/${entry.data.slug}/1`} class="card">
+              <div class="card-body">
+                <h3 class="card-title">{entry.data.title}</h3>
+                <p class="card-desc">{entry.data.description}</p>
+                <span class="card-date">{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="section">
+      <h2 class="section-title">カテゴリで探す</h2>
+      <div class="category-grid">
+        <a href="/place/" class="category-card">
+          <span class="category-icon">🏠</span>
+          <h3>場所で探す</h3>
+          <p>キッチン、浴室、リビングなど</p>
+        </a>
+        <a href="/stain/" class="category-card">
+          <span class="category-icon">🧹</span>
+          <h3>汚れで探す</h3>
+          <p>油汚れ、水垢、カビなど</p>
+        </a>
+        <a href="/season/" class="category-card">
+          <span class="category-icon">🌸</span>
+          <h3>季節で探す</h3>
+          <p>春、夏、秋、冬、年末、GW</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">新着記事</h2>
+      <div class="card-grid">
+        {recentArticles.map((entry) => (
+          <a href={`/articles/${entry.data.slug}/1`} class="card">
+            <div class="card-body">
+              <h3 class="card-title">{entry.data.title}</h3>
+              <p class="card-desc">{entry.data.description}</p>
+              <span class="card-date">{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="section-footer">
+        <a href="/blog/" class="link-more">すべての記事を見る →</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 0 3rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 1.25rem 0;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.9;
+  }
+
+  .section {
+    margin: 3.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-text);
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    text-decoration: none !important;
+    color: var(--color-text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .category-card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .category-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+  }
+
+  .category-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .category-card p {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    display: block;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    text-decoration: none !important;
+    color: var(--color-text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .card-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0 0 0.5rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-date {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .section-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .link-more {
+    font-weight: 500;
+  }
+
+  @media (min-width: 640px) {
+    .category-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

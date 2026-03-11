@@ -1,0 +1,73 @@
+---
+interface Props {
+  title?: string;
+  items?: number;
+}
+
+const { title = 'おすすめグッズ', items = 3 } = Astro.props;
+---
+<section class="affiliate-section">
+  <h3 class="affiliate-title">{title}</h3>
+  <div class="affiliate-grid">
+    {Array.from({ length: items }).map(() => (
+      <div class="affiliate-item">
+        <div class="affiliate-image"></div>
+        <div class="affiliate-info">
+          <span class="affiliate-name">商品名（楽天アフィリエイト）</span>
+          <span class="affiliate-price">¥1,234</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .affiliate-section {
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+  }
+
+  .affiliate-title {
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-text);
+  }
+
+  .affiliate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .affiliate-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .affiliate-image {
+    aspect-ratio: 1;
+    background: var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .affiliate-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .affiliate-name {
+    font-size: 0.8rem;
+    color: var(--color-text);
+  }
+
+  .affiliate-price {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+</style>

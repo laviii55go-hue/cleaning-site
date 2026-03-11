@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const articlesBySlug = new Map<string, typeof allArticles[0]>();
+for (const entry of allArticles) {
+  if (entry.data.part === 1 && !articlesBySlug.has(entry.data.slug)) {
+    articlesBySlug.set(entry.data.slug, entry);
+  }
+}
+const articles = Array.from(articlesBySlug.values())
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout title="ブログ一覧" description="お掃除に関する記事一覧">
+  <div class="container">
+    <h1 class="page-title">ブログ</h1>
+    <p class="page-desc">お掃除の方法や豆知識を発信しています</p>
+
+    <div class="article-list">
+      {articles.map((entry) => (
+        <article class="article-item">
+          <a href={`/articles/${entry.data.slug}/1`}>
+            <h2 class="article-title">{entry.data.title}</h2>
+            <p class="article-desc">{entry.data.description}</p>
+            <div class="article-meta">
+              <span>{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+              {entry.data.place && <span class="tag">{entry.data.place}</span>}
+              {entry.data.stain && <span class="tag">{entry.data.stain}</span>}
+              {entry.data.season && <span class="tag">{entry.data.season}</span>}
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-desc {
+    color: var(--color-text-muted);
+    margin: 0 0 2rem 0;
+  }
+
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .article-item a {
+    display: block;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    text-decoration: none !important;
+    color: var(--color-text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .article-item a:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .article-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .article-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .tag {
+    background: rgba(44, 62, 118, 0.08);
+    color: var(--color-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+</style>

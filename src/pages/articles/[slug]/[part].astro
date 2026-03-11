@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import ArticlePagination from '../../../components/ArticlePagination.astro';
+import AdPlaceholder from '../../../components/AdPlaceholder.astro';
+import AffiliatePlaceholder from '../../../components/AffiliatePlaceholder.astro';
+
+export async function getStaticPaths() {
+  const allArticles = await getCollection('articles');
+  return allArticles.map((entry) => ({
+    params: { slug: entry.data.slug, part: String(entry.data.part) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { slug, part, totalParts, title, recommendedProducts } = entry.data;
+
+// 関連記事（同じカテゴリの他の記事）
+const allArticles = await getCollection('articles');
+const part1Entries = allArticles.filter((e) => e.data.part === 1 && e.data.slug !== slug);
+const relatedArticles = part1Entries
+  .filter((e) => 
+    (entry.data.place && e.data.place === entry.data.place) ||
+    (entry.data.stain && e.data.stain === entry.data.stain) ||
+    (entry.data.season && e.data.season === entry.data.season)
+  )
+  .slice(0, 3);
+if (relatedArticles.length < 3) {
+  relatedArticles.push(...part1Entries.filter((e) => !relatedArticles.includes(e)).slice(0, 3 - relatedArticles.length));
+}
+---
+
+<BaseLayout title={title} description={entry.data.description}>
+  <article class="article">
+    <div class="container">
+      <header class="article-header">
+        <div class="article-meta">
+          {entry.data.place && <span class="tag">{entry.data.place}</span>}
+          {entry.data.stain && <span class="tag">{entry.data.stain}</span>}
+          {entry.data.season && <span class="tag">{entry.data.season}</span>}
+          <span class="date">{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+        </div>
+        <h1 class="article-title">{title}</h1>
+      </header>
+
+      <div class="article-body">
+        <Content />
+      </div>
+
+      {part === 2 && (
+        <AffiliatePlaceholder title="この作業で使えるおすすめグッズ" items={3} />
+      )}
+
+      <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
+
+      {part === totalParts && (
+        <>
+          <AffiliatePlaceholder title="関連商品" items={5} />
+          <AdPlaceholder size="medium" />
+        </>
+      )}
+
+      {part === totalParts && relatedArticles.length > 0 && (
+        <section class="related">
+          <h2 class="related-title">関連記事</h2>
+          <ul class="related-list">
+            {relatedArticles.map((e) => (
+              <li>
+                <a href={`/articles/${e.data.slug}/1`}>{e.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    padding-bottom: 3rem;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    background: var(--color-primary);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  .date {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .article-title {
+    font-size: 1.5rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .article-body {
+    font-size: 1rem;
+    line-height: 1.9;
+  }
+
+  .article-body :global(h2) {
+    font-size: 1.2rem;
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .article-body :global(h3) {
+    font-size: 1.05rem;
+    margin: 1.5rem 0 0.75rem 0;
+  }
+
+  .article-body :global(ul),
+  .article-body :global(ol) {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .article-body :global(p) {
+    margin: 1rem 0;
+  }
+
+  .related {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related-title {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .related-list {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .related-list li {
+    margin: 0.5rem 0;
+  }
+</style>

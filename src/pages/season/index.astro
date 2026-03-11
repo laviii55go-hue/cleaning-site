@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const articlesBySlug = new Map<string, typeof allArticles[0]>();
+for (const entry of allArticles) {
+  if (entry.data.part === 1 && entry.data.season && !articlesBySlug.has(entry.data.slug)) {
+    articlesBySlug.set(entry.data.slug, entry);
+  }
+}
+
+const seasons = [
+  { id: 'spring', name: '春', icon: '🌸' },
+  { id: 'summer', name: '夏', icon: '☀️' },
+  { id: 'autumn', name: '秋', icon: '🍂' },
+  { id: 'winter', name: '冬', icon: '❄️' },
+  { id: 'year-end', name: '年末', icon: '🎍' },
+  { id: 'gw', name: 'GW', icon: '🌿' },
+];
+
+const articlesBySeason = new Map<string, typeof allArticles[0][]>();
+for (const entry of articlesBySlug.values()) {
+  const season = entry.data.season;
+  if (season) {
+    if (!articlesBySeason.has(season)) articlesBySeason.set(season, []);
+    articlesBySeason.get(season)!.push(entry);
+  }
+}
+---
+
+<BaseLayout title="季節で探す" description="春、夏、秋、冬、年末、GWなど季節別のお掃除情報">
+  <div class="container">
+    <h1 class="page-title">季節で探す</h1>
+    <p class="page-desc">季節に合わせたお掃除のコツや特集記事をまとめています</p>
+
+    <div class="season-grid">
+      {seasons.map((season) => {
+        const articles = articlesBySeason.get(season.id) || [];
+        return (
+          <section class="season-section">
+            <h2 class="season-name">
+              <span class="season-icon">{season.icon}</span>
+              {season.name}
+            </h2>
+            {articles.length > 0 ? (
+              <ul class="article-list">
+                {articles.map((entry) => (
+                  <li>
+                    <a href={`/articles/${entry.data.slug}/1`}>{entry.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="no-articles">記事はまだありません</p>
+            )}
+          </section>
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-desc {
+    color: var(--color-text-muted);
+    margin: 0 0 2rem 0;
+  }
+
+  .season-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .season-section {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+  }
+
+  .season-name {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .season-icon {
+    font-size: 1.5rem;
+  }
+
+  .article-list {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .article-list li {
+    margin: 0.5rem 0;
+  }
+
+  .no-articles {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>

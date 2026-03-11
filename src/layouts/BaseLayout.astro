@@ -1,0 +1,243 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'お掃除の方法や豆知識をまとめた総合サイト。キッチン、浴室、リビングなど各場所別、油汚れ・水垢・カビなど汚れ別、季節ごとのお掃除情報をお届けします。' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | お掃除ナビ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a href="/" class="logo">お掃除ナビ</a>
+        <nav class="nav">
+          <a href="/place/">場所で探す</a>
+          <a href="/stain/">汚れで探す</a>
+          <a href="/season/">季節で探す</a>
+          <a href="/blog/">ブログ</a>
+        </nav>
+        <button class="menu-btn" aria-label="メニュー" type="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="nav-mobile" aria-hidden="true">
+        <a href="/place/">場所で探す</a>
+        <a href="/stain/">汚れで探す</a>
+        <a href="/season/">季節で探す</a>
+        <a href="/blog/">ブログ</a>
+      </nav>
+    </header>
+    <main class="main">
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+        <p class="copyright">© 2025 お掃除ナビ</p>
+        <nav class="footer-nav">
+          <a href="/place/">場所で探す</a>
+          <a href="/stain/">汚れで探す</a>
+          <a href="/season/">季節で探す</a>
+          <a href="/blog/">ブログ</a>
+        </nav>
+      </div>
+    </footer>
+    <script>
+      document.querySelector('.menu-btn')?.addEventListener('click', () => {
+        const nav = document.querySelector('.nav-mobile');
+        nav?.setAttribute('aria-hidden', nav.getAttribute('aria-hidden') === 'false' ? 'true' : 'false');
+        document.body.classList.toggle('menu-open');
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    /* モダン・ミニマル：深い藍・紺テーマ */
+    --color-primary: #2c3e76;
+    --color-primary-light: #5b7cba;
+    --color-primary-dark: #1e2d5c;
+    --color-bg: #fafbfc;
+    --color-surface: #ffffff;
+    --color-text: #2c3e76;
+    --color-text-muted: #5a6b7a;
+    --color-border: #e2e8ee;
+    --font-sans: 'Noto Sans JP', sans-serif;
+    --radius: 4px;
+    --shadow: 0 1px 3px rgba(44, 62, 118, 0.06);
+    --shadow-hover: 0 4px 12px rgba(44, 62, 118, 0.1);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg);
+    margin: 0;
+    line-height: 1.8;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<style>
+  .header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary) !important;
+    text-decoration: none !important;
+  }
+
+  .logo:hover {
+    color: var(--color-primary-dark) !important;
+  }
+
+  .nav {
+    display: none;
+    gap: 1.5rem;
+  }
+
+  .nav a {
+    color: var(--color-text);
+    font-size: 0.9rem;
+  }
+
+  .menu-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+  }
+
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    padding: 1rem 1.5rem;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+
+  body.menu-open .nav-mobile {
+    display: flex;
+    max-height: 300px;
+  }
+
+  .nav-mobile a {
+    padding: 0.75rem 0;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .main {
+    min-height: calc(100vh - 180px);
+    padding: 2rem 1.5rem;
+  }
+
+  .footer {
+    background: var(--color-primary);
+    color: white;
+    padding: 2rem 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .footer-nav a {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .copyright {
+    margin: 0;
+    font-size: 0.875rem;
+    opacity: 0.9;
+  }
+
+  @media (min-width: 768px) {
+    .nav {
+      display: flex;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    .nav-mobile {
+      display: none !important;
+    }
+  }
+</style>
