@@ -1,0 +1,14 @@
+---
+description: cleaning-siteの変更後はGitHubへプッシュする
+alwaysApply: true
+---
+
+# Git運用
+
+このプロジェクト（お掃除ナビ）では、変更を加えた後に以下を実行する：
+
+1. `git add .`
+2. `git commit -m "適切なコミットメッセージ"`
+3. `git push`
+
+ユーザーが変更を依頼した場合、作業完了時にプッシュまで行う。
