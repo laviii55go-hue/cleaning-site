@@ -3,7 +3,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import ArticlePagination from '../../../components/ArticlePagination.astro';
 import AdPlaceholder from '../../../components/AdPlaceholder.astro';
-import AffiliatePlaceholder from '../../../components/AffiliatePlaceholder.astro';
 import RakutenWidget from '../../../components/RakutenWidget.astro';
 
 export async function getStaticPaths() {
@@ -16,7 +15,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { slug, part, totalParts, title, recommendedProducts } = entry.data;
+const { slug, part, totalParts, title } = entry.data;
 
 // 関連記事（同じカテゴリの他の記事）
 const allArticles = await getCollection('articles');
@@ -50,18 +49,12 @@ if (relatedArticles.length < 3) {
         <Content />
       </div>
 
-      {part === 2 && (
-        <AffiliatePlaceholder title="この作業で使えるおすすめグッズ" products={recommendedProducts} items={3} />
-      )}
+      <RakutenWidget size="468x160" genreId="558944" items="ranking" />
 
       <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
 
       {part === totalParts && (
-        <>
-          <AffiliatePlaceholder title="関連商品" products={recommendedProducts} items={5} />
-          <RakutenWidget size="468x160" />
-          <AdPlaceholder size="medium" />
-        </>
+        <AdPlaceholder size="medium" />
       )}
 
       {part === totalParts && relatedArticles.length > 0 && (

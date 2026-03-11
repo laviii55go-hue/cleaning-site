@@ -4,17 +4,26 @@ import { affiliate } from '../config/monetization';
 interface Props {
   size?: '468x160' | '336x280' | '728x90';
   theme?: 'gray' | 'white';
+  /** 楽天ジャンルID（例: 558944=掃除・洗濯用品） */
+  genreId?: string;
+  /** 表示タイプ: ranking=ランキング, ctsmatch=コンテンツマッチ */
+  items?: 'ranking' | 'ctsmatch';
 }
 
-const { size = '468x160', theme = 'gray' } = Astro.props;
+const { size = '468x160', theme = 'gray', genreId = '558944', items = 'ranking' } = Astro.props;
 
 const showWidget = affiliate.rakutenId;
 ---
 {showWidget && (
   <div class="rakuten-widget-wrapper">
     <p class="rakuten-widget-label">楽天市場で関連商品を探す</p>
+    {affiliate.disclosureRequired && (
+      <p class="rakuten-disclosure">
+        <small>当サイトは楽天アフィリエイトを利用しています。リンクから購入すると、当サイトに紹介料が入る場合があります。</small>
+      </p>
+    )}
     <script is:inline>
-      {`rakuten_design="slide";rakuten_affiliateId="${affiliate.rakutenId}";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="${size}";rakuten_target="_blank";rakuten_theme="${theme}";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="${Date.now()}";`}
+      {`rakuten_design="slide";rakuten_affiliateId="${affiliate.rakutenId}";rakuten_items="${items}";rakuten_genreId="${genreId}";rakuten_size="${size}";rakuten_target="_blank";rakuten_theme="${theme}";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="${Date.now()}";`}
     </script>
     <script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
   </div>
@@ -30,5 +39,12 @@ const showWidget = affiliate.rakutenId;
     font-size: 0.875rem;
     color: var(--color-text-muted);
     margin: 0 0 0.75rem 0;
+  }
+
+  .rakuten-disclosure {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
   }
 </style>
