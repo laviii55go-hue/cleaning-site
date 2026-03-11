@@ -56,10 +56,7 @@ if (relatedArticles.length < 3) {
       <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
 
       {part === totalParts && (
-        <>
-          <AffiliatePlaceholder title="関連商品" products={recommendedProducts} items={5} />
-          <AdPlaceholder size="medium" />
-        </>
+        <AdPlaceholder size="medium" />
       )}
 
       {part === totalParts && relatedArticles.length > 0 && (
