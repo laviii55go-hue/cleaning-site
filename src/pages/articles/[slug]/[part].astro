@@ -49,7 +49,7 @@ if (relatedArticles.length < 3) {
         <Content />
       </div>
 
-      {part === 2 && (
+      {(part === 2 || part === 3) && (
         <AffiliatePlaceholder title="この作業で使えるおすすめグッズ" products={recommendedProducts} items={3} />
       )}
 
