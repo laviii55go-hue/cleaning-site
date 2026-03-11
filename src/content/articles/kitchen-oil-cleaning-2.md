@@ -7,6 +7,14 @@ totalParts: 3
 slug: kitchen-oil-cleaning
 place: kitchen
 stain: oil
+# 楽天アフィリエイト：url に楽天アフィリエイトのリンク作成ツールで取得したURLを設定
+recommendedProducts:
+  - name: 重曹 1kg
+    price: "¥398"
+  - name: クエン酸 1kg
+    price: "¥598"
+  - name: スプレーボトル 500ml
+    price: "¥298"
 ---
 
 ## 換気扇・レンジフードの掃除

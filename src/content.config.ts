@@ -17,6 +17,7 @@ const articlesSchema = z.object({
     name: z.string(),
     url: z.string().optional(),
     image: z.string().optional(),
+    price: z.string().optional(),
   })).optional(),
   image: z.string().optional(),
 });

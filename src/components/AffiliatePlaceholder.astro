@@ -1,22 +1,65 @@
 ---
+import { affiliate } from '../config/monetization';
+
+interface Product {
+  name: string;
+  url?: string;
+  image?: string;
+  price?: string;
+}
+
 interface Props {
   title?: string;
+  products?: Product[];
   items?: number;
 }
 
-const { title = 'おすすめグッズ', items = 3 } = Astro.props;
+const { title = 'おすすめグッズ', products = [], items = 3 } = Astro.props;
+
+// 記事から商品が渡された場合はそれを使用、なければプレースホルダー
+const displayProducts = products.length > 0
+  ? products
+  : Array.from({ length: items }).map(() => ({
+      name: '商品名（楽天アフィリエイト）',
+      url: undefined,
+      image: undefined,
+      price: '¥---',
+    }));
 ---
 <section class="affiliate-section">
   <h3 class="affiliate-title">{title}</h3>
+  {affiliate.disclosureRequired && (
+    <p class="affiliate-disclosure">
+      <small>当サイトは楽天アフィリエイトを利用しています。リンクから購入すると、当サイトに紹介料が入る場合があります。</small>
+    </p>
+  )}
   <div class="affiliate-grid">
-    {Array.from({ length: items }).map(() => (
-      <div class="affiliate-item">
-        <div class="affiliate-image"></div>
-        <div class="affiliate-info">
-          <span class="affiliate-name">商品名（楽天アフィリエイト）</span>
-          <span class="affiliate-price">¥1,234</span>
+    {displayProducts.map((product) => (
+      product.url ? (
+        <a href={product.url} class="affiliate-item" target="_blank" rel="noopener noreferrer sponsored">
+          {product.image ? (
+            <img src={product.image} alt={product.name} class="affiliate-image" loading="lazy" />
+          ) : (
+            <div class="affiliate-image affiliate-image-placeholder"></div>
+          )}
+          <div class="affiliate-info">
+            <span class="affiliate-name">{product.name}</span>
+            {product.price && <span class="affiliate-price">{product.price}</span>}
+          </div>
+        </a>
+      ) : (
+        <div class="affiliate-item">
+          {product.image ? (
+            <img src={product.image} alt={product.name} class="affiliate-image" loading="lazy" />
+          ) : (
+            <div class="affiliate-image affiliate-image-placeholder"></div>
+          )}
+          <div class="affiliate-info">
+            <span class="affiliate-name">{product.name}</span>
+            {product.price && <span class="affiliate-price">{product.price}</span>}
+          </div>
         </div>
-      </div>
+      )
     ))}
   </div>
 </section>
@@ -27,13 +70,20 @@ const { title = 'おすすめグッズ', items = 3 } = Astro.props;
     border-radius: var(--radius);
     padding: 1.5rem;
     margin: 2rem 0;
-    box-shadow: var(--shadow);
+    border: 1px solid var(--color-border);
   }
 
   .affiliate-title {
     font-size: 1rem;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.5rem 0;
     color: var(--color-text);
+  }
+
+  .affiliate-disclosure {
+    margin: 0 0 1rem 0;
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
   }
 
   .affiliate-grid {
@@ -46,12 +96,23 @@ const { title = 'おすすめグッズ', items = 3 } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    text-decoration: none !important;
+    color: var(--color-text);
+  }
+
+  .affiliate-item:hover {
+    opacity: 0.85;
   }
 
   .affiliate-image {
     aspect-ratio: 1;
-    background: var(--color-border);
+    object-fit: cover;
     border-radius: var(--radius);
+    width: 100%;
+  }
+
+  .affiliate-image-placeholder {
+    background: var(--color-border);
   }
 
   .affiliate-info {

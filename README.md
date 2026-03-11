@@ -64,5 +64,7 @@ npx vercel          # デプロイ実行
 
 ## 収益化について
 
-- **広告**：`AdPlaceholder` コンポーネントの位置に広告コードを設置
-- **楽天アフィリエイト**：`AffiliatePlaceholder` を実際の商品リンクに置き換え
+- **Google AdSense**：環境変数で設定（`docs/MONETIZATION.md` 参照）
+- **楽天アフィリエイト**：記事の `recommendedProducts` に商品を設定
+
+詳細は [docs/MONETIZATION.md](docs/MONETIZATION.md) を参照してください。

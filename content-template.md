@@ -23,6 +23,12 @@ place: kitchen   # 任意: kitchen, bathroom, living, bedroom, entrance, toilet
 stain: oil       # 任意: oil, water-scale, mold, dust, stain
 season: spring   # 任意: spring, summer, autumn, winter, year-end, gw
 image: /images/xxx.jpg  # 任意: アイキャッチ画像
+# 楽天アフィリエイト：記事に関連する商品（任意）
+recommendedProducts:
+  - name: 商品名
+    url: https://...  # 楽天アフィリエイトのリンク
+    image: https://...  # 商品画像URL
+    price: "¥1,234"
 ---
 ```
 

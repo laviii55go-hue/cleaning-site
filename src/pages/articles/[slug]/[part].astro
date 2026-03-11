@@ -50,14 +50,14 @@ if (relatedArticles.length < 3) {
       </div>
 
       {part === 2 && (
-        <AffiliatePlaceholder title="この作業で使えるおすすめグッズ" items={3} />
+        <AffiliatePlaceholder title="この作業で使えるおすすめグッズ" products={recommendedProducts} items={3} />
       )}
 
       <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
 
       {part === totalParts && (
         <>
-          <AffiliatePlaceholder title="関連商品" items={5} />
+          <AffiliatePlaceholder title="関連商品" products={recommendedProducts} items={5} />
           <AdPlaceholder size="medium" />
         </>
       )}
