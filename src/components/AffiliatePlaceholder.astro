@@ -45,6 +45,7 @@ const displayProducts = products.length > 0
           <div class="affiliate-info">
             <span class="affiliate-name">{product.name}</span>
             {product.price && <span class="affiliate-price">{product.price}</span>}
+            <span class="affiliate-cta">楽天で見る →</span>
           </div>
         </a>
       ) : (
@@ -130,5 +131,11 @@ const displayProducts = products.length > 0
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--color-primary);
+  }
+
+  .affiliate-cta {
+    font-size: 0.7rem;
+    color: var(--color-primary-light);
+    margin-top: 0.25rem;
   }
 </style>
