@@ -68,3 +68,10 @@ npx vercel          # デプロイ実行
 - **楽天アフィリエイト**：記事の `recommendedProducts` に商品を設定
 
 詳細は [docs/MONETIZATION.md](docs/MONETIZATION.md) を参照してください。
+
+## Google検索に表示する
+
+- **サイトマップ**：ビルド時に自動生成
+- **Google Search Console**：登録後、サイトマップを送信すると検索結果に表示されやすくなります
+
+詳細は [docs/SEO.md](docs/SEO.md) を参照してください。
