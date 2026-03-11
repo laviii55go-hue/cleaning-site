@@ -15,6 +15,7 @@ const articlesSchema = z.object({
   season: z.string().optional(),
   recommendedProducts: z.array(z.object({
     name: z.string(),
+    description: z.string().optional(),
     url: z.string().optional(),
     image: z.string().optional(),
     price: z.string().optional(),
