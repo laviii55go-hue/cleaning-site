@@ -4,9 +4,12 @@
  */
 
 // Google AdSense
+const adsenseEnabled = String(import.meta.env.PUBLIC_ADSENSE_ENABLED ?? '').trim().toLowerCase();
+const adsenseClientId = String(import.meta.env.PUBLIC_ADSENSE_CLIENT ?? '').trim();
+
 export const adsense = {
-  enabled: import.meta.env.PUBLIC_ADSENSE_ENABLED === 'true',
-  clientId: import.meta.env.PUBLIC_ADSENSE_CLIENT ?? '',
+  enabled: adsenseEnabled === 'true',
+  clientId: adsenseClientId,
   slots: {
     small: import.meta.env.PUBLIC_ADSENSE_SLOT_SMALL ?? '',
     medium: import.meta.env.PUBLIC_ADSENSE_SLOT_MEDIUM ?? '',
