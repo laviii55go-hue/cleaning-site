@@ -22,6 +22,9 @@ const fullTitle = `${title} | お掃除ナビ`;
 const ogImage = image
   ? (image.startsWith('http') ? image : new URL(image.startsWith('/') ? image : `/${image}`, siteUrl).href)
   : new URL('/ogp.png', siteUrl).href;
+
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const isProd = import.meta.env.PROD;
 ---
 <!DOCTYPE html>
 <html lang="ja">
@@ -53,6 +56,17 @@ const ogImage = image
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
     {adsense.enabled && adsense.clientId && (
       <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsense.clientId}`} crossorigin="anonymous"></script>
+    )}
+    {isProd && gaId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+        <script is:inline>
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaId}');`}
+        </script>
+      </>
     )}
   </head>
   <body>
