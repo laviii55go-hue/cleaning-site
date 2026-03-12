@@ -14,7 +14,11 @@ const articles = Array.from(articlesBySlug.values())
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout title="ブログ一覧" description="お掃除に関する記事一覧">
+<BaseLayout
+  title="ブログ一覧"
+  description="お掃除に関する記事一覧"
+  breadcrumbs={[{ label: 'ホーム', href: '/' }, { label: 'ブログ一覧', href: '/blog/' }]}
+>
   <div class="container">
     <h1 class="page-title">ブログ</h1>
     <p class="page-desc">お掃除の方法や豆知識を発信しています</p>

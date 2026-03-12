@@ -21,7 +21,11 @@ for (const entry of articlesBySlug.values()) {
 }
 ---
 
-<BaseLayout title="季節で探す" description="春、夏、秋、冬、年末、GWなど季節別のお掃除情報">
+<BaseLayout
+  title="季節で探す"
+  description="春、夏、秋、冬、年末、GWなど季節別のお掃除情報"
+  breadcrumbs={[{ label: 'ホーム', href: '/' }, { label: '季節で探す', href: '/season/' }]}
+>
   <div class="container">
     <h1 class="page-title">季節で探す</h1>
     <p class="page-desc">季節に合わせたお掃除のコツや特集記事をまとめています</p>

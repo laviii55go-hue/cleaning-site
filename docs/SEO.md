@@ -87,7 +87,16 @@ https://あなたのサイト.vercel.app
 - **robots.txt**: クロール許可 + サイトマップ参照
 - **canonical URL**: 各ページに正規URLを指定
 - **meta description**: 各ページに説明文を設定
-- **OGP（Open Graph）**: SNSシェア時のプレビュー用
+- **OGP（Open Graph）**: SNSシェア時のプレビュー用（`og:image` / `og:title` / `og:description`）
+- **Twitterカード**: `summary_large_image`、タイトル・説明・画像を指定
+- **パンくずリスト**: 全ページ（トップ以外）で表示。schema.org BreadcrumbList 対応
+- **記事の構造化データ**: 記事ページに JSON-LD（Article）を出力
+
+### OGP画像について
+
+- デフォルトで `https://あなたのサイト/ogp.png` を参照します。
+- **推奨**: `public/ogp.png` に 1200×630 ピクセルの画像を配置してください（SNSシェア時のプレビュー用）。
+- 記事のフロントマターで `image: /images/xxx.jpg` を指定すると、その記事だけ別の OGP 画像を使えます。
 
 ---
 

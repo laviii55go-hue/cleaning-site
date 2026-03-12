@@ -21,7 +21,11 @@ for (const entry of articlesBySlug.values()) {
 }
 ---
 
-<BaseLayout title="場所で探す" description="キッチン、浴室、リビングなど場所別のお掃除方法">
+<BaseLayout
+  title="場所で探す"
+  description="キッチン、浴室、リビングなど場所別のお掃除方法"
+  breadcrumbs={[{ label: 'ホーム', href: '/' }, { label: '場所で探す', href: '/place/' }]}
+>
   <div class="container">
     <h1 class="page-title">場所で探す</h1>
     <p class="page-desc">各場所のお掃除方法・豆知識をまとめています</p>

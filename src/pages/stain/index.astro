@@ -21,7 +21,11 @@ for (const entry of articlesBySlug.values()) {
 }
 ---
 
-<BaseLayout title="汚れで探す" description="油汚れ、水垢、カビなど汚れ別のお掃除方法">
+<BaseLayout
+  title="汚れで探す"
+  description="油汚れ、水垢、カビなど汚れ別のお掃除方法"
+  breadcrumbs={[{ label: 'ホーム', href: '/' }, { label: '汚れで探す', href: '/stain/' }]}
+>
   <div class="container">
     <h1 class="page-title">汚れで探す</h1>
     <p class="page-desc">汚れの種類別のお掃除方法・豆知識をまとめています</p>

@@ -1,0 +1,69 @@
+---
+export interface Props {
+  items: { label: string; href: string }[];
+}
+
+const { items } = Astro.props;
+if (items.length === 0) return null;
+---
+
+<nav class="breadcrumbs" aria-label="パンくず">
+  <ol class="breadcrumbs-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    {items.map((item, i) => (
+      <li class="breadcrumbs-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        {i > 0 && <span class="breadcrumbs-sep" aria-hidden="true">›</span>}
+        {i === items.length - 1 ? (
+          <span itemprop="name">{item.label}</span>
+        ) : (
+          <a href={item.href} itemprop="item">
+            <span itemprop="name">{item.label}</span>
+          </a>
+        )}
+        <meta itemprop="position" content={String(i + 1)} />
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumbs {
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumbs-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumbs-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .breadcrumbs-sep {
+    margin: 0 0.15rem;
+    color: var(--color-border);
+  }
+
+  .breadcrumbs-item a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .breadcrumbs-item a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumbs-item:last-child span {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+</style>

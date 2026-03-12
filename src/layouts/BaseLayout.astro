@@ -1,16 +1,27 @@
 ---
 import { adsense } from '../config/monetization';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  href: string;
+}
 
 interface Props {
   title: string;
   description?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  image?: string;
 }
 
-const { title, description = 'お掃除の方法や豆知識をまとめた総合サイト。キッチン、浴室、リビングなど各場所別、油汚れ・水垢・カビなど汚れ別、季節ごとのお掃除情報をお届けします。' } = Astro.props;
+const { title, description = 'お掃除の方法や豆知識をまとめた総合サイト。キッチン、浴室、リビングなど各場所別、油汚れ・水垢・カビなど汚れ別、季節ごとのお掃除情報をお届けします。', breadcrumbs, image } = Astro.props;
 
 const siteUrl = String(Astro.site ?? 'https://example.com').replace(/\/$/, '');
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const fullTitle = `${title} | お掃除ナビ`;
+const ogImage = image
+  ? (image.startsWith('http') ? image : new URL(image.startsWith('/') ? image : `/${image}`, siteUrl).href)
+  : new URL('/ogp.png', siteUrl).href;
 ---
 <!DOCTYPE html>
 <html lang="ja">
@@ -27,7 +38,12 @@ const fullTitle = `${title} | お掃除ナビ`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     {adsense.clientId && (
       <meta name="google-adsense-account" content={adsense.clientId} />
     )}
@@ -63,6 +79,13 @@ const fullTitle = `${title} | お掃除ナビ`;
       </nav>
     </header>
     <main class="main">
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <div class="breadcrumbs-wrap">
+          <div class="breadcrumbs-container">
+            <Breadcrumbs items={breadcrumbs} />
+          </div>
+        </div>
+      )}
       <slot />
     </main>
     <div class="rakuten-footer">
@@ -80,11 +103,13 @@ const fullTitle = `${title} | お掃除ナビ`;
     <footer class="footer">
       <div class="footer-inner">
         <p class="copyright">© 2025 お掃除ナビ</p>
-        <nav class="footer-nav">
+        <h2 class="footer-sitemap-title">サイトマップ</h2>
+        <nav class="footer-nav" aria-label="サイトマップ">
+          <a href="/">ホーム</a>
           <a href="/place/">場所で探す</a>
           <a href="/stain/">汚れで探す</a>
           <a href="/season/">季節で探す</a>
-          <a href="/blog/">ブログ</a>
+          <a href="/blog/">ブログ一覧</a>
         </nav>
       </div>
     </footer>
@@ -228,6 +253,16 @@ const fullTitle = `${title} | お掃除ナビ`;
     padding: 2rem 1.5rem;
   }
 
+  .breadcrumbs-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .breadcrumbs-container {
+    margin-bottom: 0.5rem;
+  }
+
   .rakuten-footer {
     max-width: 1100px;
     margin: 0 auto;
@@ -271,6 +306,15 @@ const fullTitle = `${title} | お掃除ナビ`;
     max-width: 1100px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .footer-sitemap-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 1rem 0 0.5rem 0;
+    opacity: 0.85;
   }
 
   .footer-nav {

@@ -31,9 +31,38 @@ const relatedArticles = part1Entries
 if (relatedArticles.length < 3) {
   relatedArticles.push(...part1Entries.filter((e) => !relatedArticles.includes(e)).slice(0, 3 - relatedArticles.length));
 }
+
+const siteUrl = String(Astro.site ?? 'https://example.com').replace(/\/$/, '');
+const articleUrl = new URL(`/articles/${slug}/1`, siteUrl).href;
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: 'ブログ一覧', href: '/blog/' },
+  { label: title, href: `/articles/${slug}/1` },
+];
+
+// JSON-LD Article（構造化データ）
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: entry.data.description,
+  datePublished: entry.data.pubDate.toISOString(),
+  url: articleUrl,
+  publisher: {
+    '@type': 'Organization',
+    name: 'お掃除ナビ',
+    url: siteUrl,
+  },
+};
 ---
 
-<BaseLayout title={title} description={entry.data.description}>
+<BaseLayout
+  title={title}
+  description={entry.data.description}
+  breadcrumbs={breadcrumbs}
+  image={entry.data.image}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="article">
     <div class="container">
       <header class="article-header">
