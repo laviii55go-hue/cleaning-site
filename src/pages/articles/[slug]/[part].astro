@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import ArticlePagination from '../../../components/ArticlePagination.astro';
+import ArticleShare from '../../../components/ArticleShare.astro';
 import AdPlaceholder from '../../../components/AdPlaceholder.astro';
 import AffiliatePlaceholder from '../../../components/AffiliatePlaceholder.astro';
 import { getPlaceInfo, getStainInfo, getSeasonInfo, getPlaceUrl, getStainUrl, getSeasonUrl } from '../../../config/categories';
@@ -34,6 +35,7 @@ if (relatedArticles.length < 3) {
 
 const siteUrl = String(Astro.site ?? 'https://example.com').replace(/\/$/, '');
 const articleUrl = new URL(`/articles/${slug}/1`, siteUrl).href;
+const currentPageUrl = new URL(`/articles/${slug}/${part}`, siteUrl).href;
 const breadcrumbs = [
   { label: 'ホーム', href: '/' },
   { label: 'ブログ一覧', href: '/blog/' },
@@ -41,7 +43,7 @@ const breadcrumbs = [
 ];
 
 // JSON-LD Article（構造化データ）
-const jsonLd = {
+const jsonLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
@@ -54,6 +56,9 @@ const jsonLd = {
     url: siteUrl,
   },
 };
+if (entry.data.updatedDate) {
+  jsonLd.dateModified = entry.data.updatedDate.toISOString();
+}
 ---
 
 <BaseLayout
@@ -79,7 +84,10 @@ const jsonLd = {
             const info = getSeasonInfo(entry.data.season!);
             return info ? <a href={getSeasonUrl(entry.data.season!)} class="tag tag-link">{info.name}</a> : <span class="tag">{entry.data.season}</span>;
           })()}
-          <span class="date">{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+          <span class="date">公開日：{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+          {entry.data.updatedDate && (
+            <span class="date">最終更新：{entry.data.updatedDate.toLocaleDateString('ja-JP')}</span>
+          )}
         </div>
         <h1 class="article-title">{title}</h1>
       </header>
@@ -88,11 +96,19 @@ const jsonLd = {
         <Content />
       </div>
 
+      {relatedArticles.length > 0 && (
+        <p class="article-inline-related">
+          あわせて読みたい：<a href={`/articles/${relatedArticles[0].data.slug}/1`}>{relatedArticles[0].data.title}</a>
+        </p>
+      )}
+
       {(part === 2 || part === 3) && (
         <AffiliatePlaceholder title="この作業で使えるおすすめグッズ" products={recommendedProducts} items={3} />
       )}
 
       <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
+
+      <ArticleShare shareUrl={currentPageUrl} title={title} />
 
       {/* 広告スペース336×280：現時点では非表示 */}
       {false && part === totalParts && (
@@ -192,6 +208,19 @@ const jsonLd = {
 
   .article-body :global(p) {
     margin: 1rem 0;
+  }
+
+  .article-inline-related {
+    margin: 1.5rem 0;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg);
+    border-left: 3px solid var(--color-primary);
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  .article-inline-related a {
+    font-weight: 500;
   }
 
   .related {

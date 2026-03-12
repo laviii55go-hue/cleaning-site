@@ -1,0 +1,148 @@
+---
+export interface Props {
+  shareUrl: string;
+  title: string;
+}
+
+const { shareUrl, title } = Astro.props;
+const encodedUrl = encodeURIComponent(shareUrl);
+const encodedTitle = encodeURIComponent(title);
+const twitterUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+const lineUrl = `https://social-plugins.line.me/lineit/share?url=${encodedUrl}`;
+---
+
+<section class="share" aria-label="記事の共有">
+  <h2 class="share-title">この記事を共有</h2>
+  <div class="share-buttons">
+    <a
+      href={twitterUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="share-btn share-btn-twitter"
+      aria-label="X（Twitter）で共有"
+    >
+      X
+    </a>
+    <a
+      href={facebookUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="share-btn share-btn-facebook"
+      aria-label="Facebookで共有"
+    >
+      Facebook
+    </a>
+    <a
+      href={lineUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="share-btn share-btn-line"
+      aria-label="LINEで共有"
+    >
+      LINE
+    </a>
+    <button
+      type="button"
+      class="share-btn share-btn-copy"
+      aria-label="URLをコピー"
+      data-share-url={shareUrl}
+    >
+      URLをコピー
+    </button>
+  </div>
+  <p class="share-copy-result" id="share-copy-result" role="status" aria-live="polite"></p>
+</section>
+
+<script>
+  document.querySelectorAll('.share-btn-copy').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const url = btn.getAttribute('data-share-url');
+      const resultEl = document.getElementById('share-copy-result');
+      if (!url || !resultEl) return;
+      try {
+        await navigator.clipboard.writeText(url);
+        resultEl.textContent = 'URLをコピーしました';
+        resultEl.classList.add('is-visible');
+        setTimeout(() => {
+          resultEl.textContent = '';
+          resultEl.classList.remove('is-visible');
+        }, 2500);
+      } catch {
+        resultEl.textContent = 'コピーに失敗しました';
+        resultEl.classList.add('is-visible');
+      }
+    });
+  });
+</script>
+
+<style>
+  .share {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .share-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    color: var(--color-text);
+  }
+
+  .share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .share-btn:hover {
+    background: var(--color-bg);
+    border-color: var(--color-primary-light);
+  }
+
+  .share-btn-twitter {
+    color: #0f1419;
+  }
+
+  .share-btn-facebook {
+    color: #1877f2;
+  }
+
+  .share-btn-line {
+    color: #00b900;
+  }
+
+  .share-btn-copy {
+    color: var(--color-primary);
+  }
+
+  .share-copy-result {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.8125rem;
+    color: var(--color-primary);
+    min-height: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .share-copy-result.is-visible {
+    opacity: 1;
+  }
+</style>
