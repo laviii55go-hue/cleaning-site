@@ -25,40 +25,40 @@ const siteDesc =
 </BaseLayout>
 
 <script is:inline>
-  (function () {
-    const list = document.getElementById('likes-ranking');
+  window.addEventListener('load', function () {
+    var list = document.getElementById('likes-ranking');
     if (!list || !window.firebase || !window.firebase.firestore) {
       if (list) {
         list.innerHTML = '<li class="ranking-empty">ランキングを読み込めませんでした。</li>';
       }
       return;
     }
-    const db = window.firebase.firestore();
+    var db = window.firebase.firestore();
     db.collection('articleLikes')
       .orderBy('count', 'desc')
       .limit(20)
       .get()
-      .then((snap) => {
+      .then(function (snap) {
         if (snap.empty) {
           list.innerHTML = '<li class="ranking-empty">まだ「なるほど！」が押された記事はありません。</li>';
           return;
         }
-        const items = [];
-        snap.forEach((doc) => {
-          const data = doc.data() || {};
-          const slug = data.slug || doc.id;
-          const count = typeof data.count === 'number' ? data.count : 0;
-          const title = data.title || slug;
+        var items = [];
+        snap.forEach(function (doc) {
+          var data = doc.data() || {};
+          var slug = data.slug || doc.id;
+          var count = typeof data.count === 'number' ? data.count : 0;
+          var title = data.title || slug;
           items.push(
-            `<li class="ranking-item"><a href="/articles/${slug}/1" class="ranking-link">${title}</a><span class="ranking-count">${count} なるほど</span></li>`
+            '<li class="ranking-item"><a href="/articles/' + slug + '/1" class="ranking-link">' + title + '</a><span class="ranking-count">' + count + ' なるほど</span></li>'
           );
         });
         list.innerHTML = items.join('');
       })
-      .catch(() => {
+      .catch(function () {
         list.innerHTML = '<li class="ranking-empty">ランキングを読み込めませんでした。</li>';
       });
-  })();
+  });
 </script>
 
 <style>

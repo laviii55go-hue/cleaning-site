@@ -17,61 +17,90 @@ const { slug } = Astro.props;
     <span class="like-count" data-like-count>0</span>
   </button>
   <p class="like-note">※1ブラウザにつき1回までカウントされます</p>
+  <p class="like-status" role="status" aria-live="polite"></p>
 </section>
 
-<script is:inline define:vars={{ slug }}>
-  (function () {
-    const btn = document.querySelector<HTMLButtonElement>(
-      `.like-button[data-like-slug="${slug}"]`
-    );
-    const countEl = btn?.querySelector<HTMLElement>('[data-like-count]');
-    if (!btn || !countEl || !window.firebase || !window.firebase.firestore) return;
+<script is:inline>
+  console.log('[なるほど] script 読み込み完了');
+  window.addEventListener('load', function () {
+    console.log('[なるほど] load 発火');
+    var likeSection = document.querySelector('section.like');
+    if (!likeSection) {
+      console.warn('[なるほど] section.like が見つかりません');
+      return;
+    }
+    var btn = likeSection.querySelector('.like-button');
+    var countEl = likeSection.querySelector('[data-like-count]');
+    var statusEl = likeSection.querySelector('.like-status');
+    var slug = btn ? btn.getAttribute('data-like-slug') : null;
 
-    const db = window.firebase.firestore();
-    const docRef = db.collection('articleLikes').doc(slug);
-    const storageKey = `article-like:${slug}`;
+    function setStatus(msg) {
+      if (statusEl) { statusEl.textContent = msg; statusEl.className = 'like-status is-visible'; }
+    }
 
-    // 初期状態の取得
-    docRef.get().then((snap) => {
+    if (!btn || !countEl || !slug) {
+      setStatus('ボタンの準備に失敗しました');
+      console.warn('[なるほど] ボタン・カウント・slug のいずれかが見つかりません', { btn: !!btn, countEl: !!countEl, slug: slug });
+      return;
+    }
+    if (!window.firebase) {
+      setStatus('Firebaseの読み込みに失敗しました（apiKey等を確認してください）');
+      console.warn('[なるほど] window.firebase がありません');
+      return;
+    }
+    if (!window.firebase.firestore) {
+      setStatus('Firestoreの読み込みに失敗しました');
+      console.warn('[なるほど] window.firebase.firestore がありません');
+      return;
+    }
+
+    var db = window.firebase.firestore();
+    var docRef = db.collection('articleLikes').doc(slug);
+    var storageKey = 'article-like:' + slug;
+
+    docRef.get().then(function (snap) {
       if (snap.exists) {
-        const data = snap.data() || {};
-        const count = typeof data.count === 'number' ? data.count : 0;
+        var data = snap.data() || {};
+        var count = typeof data.count === 'number' ? data.count : 0;
         countEl.textContent = String(count);
       }
       if (localStorage.getItem(storageKey) === 'liked') {
         btn.classList.add('is-liked');
         btn.setAttribute('aria-pressed', 'true');
       }
-    }).catch(() => {
-      // 失敗しても画面はそのまま（サイレント）
+    }).catch(function (e) {
+      console.warn('[なるほど] 初期読み込みエラー', e);
+      setStatus('カウントの取得に失敗しました');
     });
 
-    btn.addEventListener('click', async () => {
-      if (localStorage.getItem(storageKey) === 'liked') {
-        return;
-      }
-      try {
-        const now = window.firebase.firestore.FieldValue.serverTimestamp();
-        await docRef.set(
-          {
-            slug,
-            count: window.firebase.firestore.FieldValue.increment(1),
-            updatedAt: now,
-          },
-          { merge: true }
-        );
-        const snap = await docRef.get();
-        const data = snap.data() || {};
-        const count = typeof data.count === 'number' ? data.count : 0;
-        countEl.textContent = String(count);
-        localStorage.setItem(storageKey, 'liked');
-        btn.classList.add('is-liked');
-        btn.setAttribute('aria-pressed', 'true');
-      } catch {
-        // エラー時は何もしない（ユーザーにはエラー表示しない）
-      }
+    btn.addEventListener('click', function () {
+      if (localStorage.getItem(storageKey) === 'liked') return;
+      var self = btn;
+      (async function () {
+        try {
+          var now = window.firebase.firestore.FieldValue.serverTimestamp();
+          await docRef.set(
+            {
+              slug: slug,
+              count: window.firebase.firestore.FieldValue.increment(1),
+              updatedAt: now,
+            },
+            { merge: true }
+          );
+          var snap = await docRef.get();
+          var data = snap.data() || {};
+          var count = typeof data.count === 'number' ? data.count : 0;
+          countEl.textContent = String(count);
+          localStorage.setItem(storageKey, 'liked');
+          self.classList.add('is-liked');
+          self.setAttribute('aria-pressed', 'true');
+        } catch (e) {
+          console.error('[なるほど] 送信エラー', e);
+          setStatus('送信に失敗しました: ' + (e && e.message ? e.message : '不明'));
+        }
+      })();
     });
-  })();
+  });
 </script>
 
 <style>
@@ -122,6 +151,17 @@ const { slug } = Astro.props;
     margin: 0.5rem 0 0 0;
     font-size: 0.75rem;
     color: var(--color-text-muted);
+  }
+
+  .like-status {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.8rem;
+    min-height: 1.25em;
+    color: var(--color-primary);
+  }
+
+  .like-status.is-visible {
+    color: #c0392b;
   }
 </style>
 
