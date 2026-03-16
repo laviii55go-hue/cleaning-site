@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const articlesBySlug = new Map<string, typeof allArticles[0]>();
+for (const entry of allArticles) {
+  if (entry.data.part === 1 && !articlesBySlug.has(entry.data.slug)) {
+    articlesBySlug.set(entry.data.slug, entry);
+  }
+}
+
+const basicArticles = Array.from(articlesBySlug.values())
+  .filter((entry) => entry.data.category === 'basic')
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout
+  title="掃除の基本知識｜洗剤・道具の使い分け"
+  description="重曹・クエン酸・酸素系漂白剤など、掃除に使う洗剤や道具の基本知識をまとめました。汚れ別の記事を読む前の共通ベースとして活用できます。"
+  breadcrumbs={[{ label: 'ホーム', href: '/' }, { label: '共通知識', href: '/basic/' }]}
+>
+  <div class="container">
+    <h1 class="page-title">共通知識（掃除の基本）</h1>
+    <p class="page-desc">
+      どの場所・どの汚れにも共通する「掃除の基本知識」をまとめています。<br />
+      洗剤や道具の使い分けを知っておくと、場所別・汚れ別の記事がさらに活かせます。
+    </p>
+
+    {basicArticles.length === 0 ? (
+      <p class="no-articles">共通知識の記事はまだありません。</p>
+    ) : (
+      <div class="article-list">
+        {basicArticles.map((entry) => (
+          <article class="article-item">
+            <a href={`/articles/${entry.data.slug}/1`} class="article-link">
+              <h2 class="article-title">{entry.data.title}</h2>
+              <p class="article-desc">{entry.data.description}</p>
+            </a>
+            <div class="article-meta">
+              <span>{entry.data.pubDate.toLocaleDateString('ja-JP')}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-desc {
+    color: var(--color-text-muted);
+    margin: 0 0 2rem 0;
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .article-item {
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .article-item:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .article-link {
+    display: block;
+    text-decoration: none !important;
+    color: var(--color-text);
+  }
+
+  .article-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .article-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .no-articles {
+    color: var(--color-text-muted);
+  }
+</style>
+

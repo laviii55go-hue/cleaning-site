@@ -7,6 +7,7 @@ const articlesSchema = z.object({
   description: z.string(),
   pubDate: z.coerce.date(),
   updatedDate: z.coerce.date().optional(),
+  category: z.string().optional(),
   part: z.number(),
   totalParts: z.number(),
   slug: z.string(),
