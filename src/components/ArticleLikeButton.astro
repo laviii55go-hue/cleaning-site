@@ -53,6 +53,17 @@ const { slug } = Astro.props;
       console.warn('[なるほど] window.firebase.firestore がありません');
       return;
     }
+    if (!window.firebase.apps || window.firebase.apps.length === 0) {
+      var cfg = window.__FIREBASE_CONFIG__;
+      if (cfg && cfg.apiKey && cfg.projectId) {
+        try { window.firebase.initializeApp(cfg); } catch (e) { console.warn('[なるほど] フォールバック init 失敗', e); }
+      }
+    }
+    if (!window.firebase.apps || window.firebase.apps.length === 0) {
+      setStatus('Firebaseの初期化に失敗しました');
+      console.warn('[なるほど] Firebase App が作成されていません');
+      return;
+    }
 
     var db = window.firebase.firestore();
     var docRef = db.collection('articleLikes').doc(slug);

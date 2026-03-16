@@ -33,6 +33,18 @@ const siteDesc =
       }
       return;
     }
+    if (!window.firebase.apps || window.firebase.apps.length === 0) {
+      var cfg = window.__FIREBASE_CONFIG__;
+      if (cfg && cfg.apiKey && cfg.projectId) {
+        try { window.firebase.initializeApp(cfg); } catch (e) {}
+      }
+    }
+    if (!window.firebase.apps || window.firebase.apps.length === 0) {
+      if (list) {
+        list.innerHTML = '<li class="ranking-empty">Firebaseの初期化に失敗しました。</li>';
+      }
+      return;
+    }
     var db = window.firebase.firestore();
     db.collection('articleLikes')
       .orderBy('count', 'desc')

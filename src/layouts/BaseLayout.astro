@@ -69,10 +69,21 @@ const firebaseConfig = {
         <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
         <script is:inline define:vars={{ firebaseConfig }}>
-          if (!window.firebaseAppsInitialized && window.firebase) {
-            window.firebase.initializeApp(firebaseConfig);
-            window.firebaseAppsInitialized = true;
-          }
+          (function() {
+            if (window.firebaseAppsInitialized) return;
+            if (typeof window.firebase === 'undefined' || !window.firebase.initializeApp) return;
+            if (!firebaseConfig || !firebaseConfig.apiKey || !firebaseConfig.projectId) return;
+            try {
+              if (!window.firebase.apps || window.firebase.apps.length === 0) {
+                window.firebase.initializeApp(firebaseConfig);
+              }
+              window.firebaseAppsInitialized = true;
+              window.__FIREBASE_CONFIG__ = firebaseConfig;
+            } catch (e) {
+              console.warn('[Firebase] initializeApp failed', e);
+              window.__FIREBASE_CONFIG__ = firebaseConfig;
+            }
+          })();
         </script>
       </>
     )}
