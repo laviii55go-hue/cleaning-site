@@ -5,6 +5,7 @@ import ArticlePagination from '../../../components/ArticlePagination.astro';
 import ArticleShare from '../../../components/ArticleShare.astro';
 import AdPlaceholder from '../../../components/AdPlaceholder.astro';
 import AffiliatePlaceholder from '../../../components/AffiliatePlaceholder.astro';
+import ArticleLikeButton from '../../../components/ArticleLikeButton.astro';
 import { getPlaceInfo, getStainInfo, getSeasonInfo, getPlaceUrl, getStainUrl, getSeasonUrl } from '../../../config/categories';
 
 export async function getStaticPaths() {
@@ -109,6 +110,8 @@ if (entry.data.updatedDate) {
       <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
 
       <ArticleShare shareUrl={currentPageUrl} title={title} />
+
+      <ArticleLikeButton slug={slug} />
 
       {/* 広告スペース336×280：現時点では非表示 */}
       {false && part === totalParts && (

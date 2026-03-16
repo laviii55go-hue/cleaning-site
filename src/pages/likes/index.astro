@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const siteTitle = '人気記事ランキング｜なるほどボタンが多い記事';
+const siteDesc =
+  '「なるほど！」ボタンが多く押された人気記事ランキング。実際に読者から支持されたお掃除記事をまとめています。';
+---
+
+<BaseLayout
+  title={siteTitle}
+  description={siteDesc}
+  breadcrumbs={[{ label: 'ホーム', href: '/' }, { label: '人気記事ランキング', href: '/likes/' }]}
+>
+  <div class="container">
+    <h1 class="page-title">人気記事ランキング</h1>
+    <p class="page-desc">
+      各記事の「なるほど！」ボタンの数にもとづいた人気記事ランキングです。<br />
+      ランキングは一定時間ごとに更新されます。
+    </p>
+
+    <ol class="ranking-list" id="likes-ranking" aria-live="polite">
+      <li class="ranking-empty">読み込み中です…</li>
+    </ol>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const list = document.getElementById('likes-ranking');
+    if (!list || !window.firebase || !window.firebase.firestore) {
+      if (list) {
+        list.innerHTML = '<li class="ranking-empty">ランキングを読み込めませんでした。</li>';
+      }
+      return;
+    }
+    const db = window.firebase.firestore();
+    db.collection('articleLikes')
+      .orderBy('count', 'desc')
+      .limit(20)
+      .get()
+      .then((snap) => {
+        if (snap.empty) {
+          list.innerHTML = '<li class="ranking-empty">まだ「なるほど！」が押された記事はありません。</li>';
+          return;
+        }
+        const items = [];
+        snap.forEach((doc) => {
+          const data = doc.data() || {};
+          const slug = data.slug || doc.id;
+          const count = typeof data.count === 'number' ? data.count : 0;
+          const title = data.title || slug;
+          items.push(
+            `<li class="ranking-item"><a href="/articles/${slug}/1" class="ranking-link">${title}</a><span class="ranking-count">${count} なるほど</span></li>`
+          );
+        });
+        list.innerHTML = items.join('');
+      })
+      .catch(() => {
+        list.innerHTML = '<li class="ranking-empty">ランキングを読み込めませんでした。</li>';
+      });
+  })();
+</script>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-desc {
+    color: var(--color-text-muted);
+    margin: 0 0 2rem 0;
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+
+  .ranking-list {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .ranking-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0.5rem 0;
+  }
+
+  .ranking-link {
+    flex: 1;
+    text-decoration: none !important;
+    color: var(--color-text);
+  }
+
+  .ranking-link:hover {
+    text-decoration: underline;
+  }
+
+  .ranking-count {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  .ranking-empty {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>
+

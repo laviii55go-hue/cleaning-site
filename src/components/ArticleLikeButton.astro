@@ -1,0 +1,127 @@
+---
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+---
+
+<section class="like" aria-label="この記事の参考度">
+  <button
+    type="button"
+    class="like-button"
+    data-like-slug={slug}
+    aria-pressed="false"
+  >
+    <span class="like-label">なるほど！</span>
+    <span class="like-count" data-like-count>0</span>
+  </button>
+  <p class="like-note">※1ブラウザにつき1回までカウントされます</p>
+</section>
+
+<script is:inline define:vars={{ slug }}>
+  (function () {
+    const btn = document.querySelector<HTMLButtonElement>(
+      `.like-button[data-like-slug="${slug}"]`
+    );
+    const countEl = btn?.querySelector<HTMLElement>('[data-like-count]');
+    if (!btn || !countEl || !window.firebase || !window.firebase.firestore) return;
+
+    const db = window.firebase.firestore();
+    const docRef = db.collection('articleLikes').doc(slug);
+    const storageKey = `article-like:${slug}`;
+
+    // 初期状態の取得
+    docRef.get().then((snap) => {
+      if (snap.exists) {
+        const data = snap.data() || {};
+        const count = typeof data.count === 'number' ? data.count : 0;
+        countEl.textContent = String(count);
+      }
+      if (localStorage.getItem(storageKey) === 'liked') {
+        btn.classList.add('is-liked');
+        btn.setAttribute('aria-pressed', 'true');
+      }
+    }).catch(() => {
+      // 失敗しても画面はそのまま（サイレント）
+    });
+
+    btn.addEventListener('click', async () => {
+      if (localStorage.getItem(storageKey) === 'liked') {
+        return;
+      }
+      try {
+        const now = window.firebase.firestore.FieldValue.serverTimestamp();
+        await docRef.set(
+          {
+            slug,
+            count: window.firebase.firestore.FieldValue.increment(1),
+            updatedAt: now,
+          },
+          { merge: true }
+        );
+        const snap = await docRef.get();
+        const data = snap.data() || {};
+        const count = typeof data.count === 'number' ? data.count : 0;
+        countEl.textContent = String(count);
+        localStorage.setItem(storageKey, 'liked');
+        btn.classList.add('is-liked');
+        btn.setAttribute('aria-pressed', 'true');
+      } catch {
+        // エラー時は何もしない（ユーザーにはエラー表示しない）
+      }
+    });
+  })();
+</script>
+
+<style>
+  .like {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .like-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    transition: background 0.2s, border-color 0.2s, transform 0.05s;
+  }
+
+  .like-button:hover {
+    border-color: var(--color-primary-light);
+    background: var(--color-bg);
+  }
+
+  .like-button:active {
+    transform: scale(0.98);
+  }
+
+  .like-button.is-liked {
+    border-color: var(--color-primary);
+    background: rgba(44, 62, 118, 0.06);
+  }
+
+  .like-label {
+    font-weight: 600;
+  }
+
+  .like-count {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .like-note {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+</style>
+
