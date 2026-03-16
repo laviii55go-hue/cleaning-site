@@ -1,9 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 const siteTitle = '人気記事ランキング｜なるほどボタンが多い記事';
 const siteDesc =
   '「なるほど！」ボタンが多く押された人気記事ランキング。実際に読者から支持されたお掃除記事をまとめています。';
+
+const allArticles = await getCollection('articles');
+const part1Entries = allArticles.filter((e) => e.data.part === 1);
+const slugToTitle: Record<string, string> = {};
+part1Entries.forEach((e) => {
+  slugToTitle[e.data.slug] = e.data.title;
+});
 ---
 
 <BaseLayout
@@ -24,6 +32,7 @@ const siteDesc =
   </div>
 </BaseLayout>
 
+<script is:inline set:html={`window.__ARTICLE_TITLES__=${JSON.stringify(slugToTitle)};`} />
 <script is:inline>
   window.addEventListener('load', function () {
     var list = document.getElementById('likes-ranking');
@@ -55,15 +64,23 @@ const siteDesc =
           list.innerHTML = '<li class="ranking-empty">まだ「なるほど！」が押された記事はありません。</li>';
           return;
         }
+        var titlesMap = window.__ARTICLE_TITLES__ || {};
         var items = [];
+        var rank = 1;
         snap.forEach(function (doc) {
           var data = doc.data() || {};
           var slug = data.slug || doc.id;
           var count = typeof data.count === 'number' ? data.count : 0;
-          var title = data.title || slug;
+          var title = data.title || titlesMap[slug] || slug;
+          var escapedTitle = title.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
           items.push(
-            '<li class="ranking-item"><a href="/articles/' + slug + '/1" class="ranking-link">' + title + '</a><span class="ranking-count">' + count + ' なるほど</span></li>'
+            '<li class="ranking-item">' +
+              '<span class="ranking-rank">' + rank + '</span>' +
+              '<a href="/articles/' + slug + '/1" class="ranking-link">' + escapedTitle + '</a>' +
+              '<span class="ranking-count">' + count + ' <span class="ranking-count-unit">なるほど</span></span>' +
+            '</li>'
           );
+          rank++;
         });
         list.innerHTML = items.join('');
       })
@@ -92,22 +109,42 @@ const siteDesc =
   }
 
   .ranking-list {
+    list-style: none;
     margin: 0;
-    padding-left: 1.25rem;
+    padding: 0;
   }
 
   .ranking-item {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    align-items: center;
     gap: 0.75rem;
-    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .ranking-rank {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 4px;
   }
 
   .ranking-link {
     flex: 1;
     text-decoration: none !important;
     color: var(--color-text);
+    font-weight: 500;
+    min-width: 0;
   }
 
   .ranking-link:hover {
@@ -115,9 +152,15 @@ const siteDesc =
   }
 
   .ranking-count {
-    font-size: 0.85rem;
+    flex-shrink: 0;
+    font-size: 0.9rem;
     color: var(--color-text-muted);
     white-space: nowrap;
+  }
+
+  .ranking-count-unit {
+    font-size: 0.8rem;
+    margin-left: 0.15rem;
   }
 
   .ranking-empty {

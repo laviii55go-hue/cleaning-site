@@ -1,12 +1,13 @@
 ---
 interface Props {
   slug: string;
+  title?: string;
 }
 
-const { slug } = Astro.props;
+const { slug, title } = Astro.props;
 ---
 
-<section class="like" aria-label="この記事の参考度">
+<section class="like" aria-label="この記事の参考度" data-like-slug={slug} data-article-title={title ?? ''}>
   <button
     type="button"
     class="like-button"
@@ -21,9 +22,7 @@ const { slug } = Astro.props;
 </section>
 
 <script is:inline>
-  console.log('[なるほど] script 読み込み完了');
   window.addEventListener('load', function () {
-    console.log('[なるほど] load 発火');
     var likeSection = document.querySelector('section.like');
     if (!likeSection) {
       console.warn('[なるほど] section.like が見つかりません');
@@ -33,6 +32,7 @@ const { slug } = Astro.props;
     var countEl = likeSection.querySelector('[data-like-count]');
     var statusEl = likeSection.querySelector('.like-status');
     var slug = btn ? btn.getAttribute('data-like-slug') : null;
+    var articleTitle = likeSection.getAttribute('data-article-title') || '';
 
     function setStatus(msg) {
       if (statusEl) { statusEl.textContent = msg; statusEl.className = 'like-status is-visible'; }
@@ -90,14 +90,13 @@ const { slug } = Astro.props;
       (async function () {
         try {
           var now = window.firebase.firestore.FieldValue.serverTimestamp();
-          await docRef.set(
-            {
-              slug: slug,
-              count: window.firebase.firestore.FieldValue.increment(1),
-              updatedAt: now,
-            },
-            { merge: true }
-          );
+          var payload = {
+            slug: slug,
+            count: window.firebase.firestore.FieldValue.increment(1),
+            updatedAt: now,
+          };
+          if (articleTitle.length > 0) payload.title = articleTitle;
+          await docRef.set(payload, { merge: true });
           var snap = await docRef.get();
           var data = snap.data() || {};
           var count = typeof data.count === 'number' ? data.count : 0;
