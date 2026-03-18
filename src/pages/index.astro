@@ -75,7 +75,7 @@ const seasonalArticles = Array.from(articlesBySlug.values())
       </div>
     </section>
 
-    <section class="section">
+    <section id="new-articles" class="section">
       <h2 class="section-title">新着記事</h2>
       <div class="card-grid">
         {recentArticles.map((entry) => (
@@ -103,6 +103,10 @@ const seasonalArticles = Array.from(articlesBySlug.values())
 
   .section {
     margin: 3.5rem 0;
+  }
+
+  #new-articles {
+    scroll-margin-top: 5rem;
   }
 
   .section-title {
