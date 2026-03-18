@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import HeroSection from '../components/HeroSection.astro';
 
 const allArticles = await getCollection('articles');
 // 記事をslugでグループ化（各記事のパート1のみ表示）
@@ -28,12 +29,9 @@ const seasonalArticles = Array.from(articlesBySlug.values())
 ---
 
 <BaseLayout title="お掃除の方法・掃除のコツ｜場所別・汚れ別のやり方" description="お掃除の方法や掃除のコツを、キッチン・浴室・リビングなど場所別、油汚れ・水垢・カビなど汚れ別、季節別に解説。換気扇・排水口・窓の掃除など具体的な手順をまとめています。">
-  <div class="container">
-    <section class="hero">
-      <h1 class="hero-title">お掃除ナビ</h1>
-      <p class="hero-desc">各場所のお掃除方法・豆知識をひとつのサイトで。季節に合わせたコンテンツもお届けします。</p>
-    </section>
+  <HeroSection />
 
+  <div class="container">
     {seasonalArticles.length > 0 && (
       <section class="section">
         <h2 class="section-title">今月の季節コンテンツ</h2>
@@ -101,29 +99,6 @@ const seasonalArticles = Array.from(articlesBySlug.values())
   .container {
     max-width: 1100px;
     margin: 0 auto;
-  }
-
-  .hero {
-    text-align: center;
-    padding: 4rem 0 3rem;
-  }
-
-  .hero-title {
-    font-size: 2.25rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin: 0 0 1.25rem 0;
-    letter-spacing: 0.02em;
-  }
-
-  .hero-desc {
-    font-size: 1rem;
-    color: var(--color-text-muted);
-    margin: 0;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.9;
   }
 
   .section {

@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
 import ArticlePagination from '../../../components/ArticlePagination.astro';
 import ArticleShare from '../../../components/ArticleShare.astro';
-import AdPlaceholder from '../../../components/AdPlaceholder.astro';
+import A8Ad from '../../../components/A8Ad.astro';
 import AffiliatePlaceholder from '../../../components/AffiliatePlaceholder.astro';
 import ArticleLikeButton from '../../../components/ArticleLikeButton.astro';
 import { getPlaceInfo, getStainInfo, getSeasonInfo, getPlaceUrl, getStainUrl, getSeasonUrl } from '../../../config/categories';
@@ -113,10 +113,7 @@ if (entry.data.updatedDate) {
 
       <ArticleLikeButton slug={slug} title={title} />
 
-      {/* 広告スペース336×280：現時点では非表示 */}
-      {false && part === totalParts && (
-        <AdPlaceholder size="medium" />
-      )}
+      {part === totalParts && <A8Ad />}
 
       {part === totalParts && relatedArticles.length > 0 && (
         <section class="related">
