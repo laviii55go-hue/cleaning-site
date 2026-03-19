@@ -1,7 +1,7 @@
 ---
 title: 枕・シーツの洗い方とニオイ対策｜黄ばみ・皮脂を落として清潔に
 description: 枕やシーツの洗濯頻度と洗い方、黄ばみ・皮脂・ニオイの対処法を解説。洗える枕と洗えない枕の違いもまとめます。
-pubDate: 2026-03-26
+pubDate: 2026-03-19
 part: 3
 totalParts: 3
 slug: pillow-sheets-cleaning

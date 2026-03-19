@@ -1,7 +1,7 @@
 ---
 title: 布団・マットレスのホコリ・ダニ対策｜掃除機と乾燥で清潔に
 description: 布団やマットレスにたまるホコリ・ダニの原因と対策。掃除機がけ、天日干し・布団乾燥機、ダニ対策のコツを解説します。
-pubDate: 2026-03-26
+pubDate: 2026-03-19
 part: 3
 totalParts: 3
 slug: bed-mattress-dust-mites
