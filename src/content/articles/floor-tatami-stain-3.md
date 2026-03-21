@@ -41,3 +41,15 @@ recommendedProducts:
 4. **鉢植え・家具**の置き方で、これ以上のシミや跡を防ぐ
 
 無理にこすったり水をかけすぎたりせず、素材に合わせたケアを心がけてください。
+
+## 床掃除におすすめ（提携広告）
+
+<a href="https://px.a8.net/svt/ejp?a8mat=4AZHWA+3LSJFE+1QQM+HWAG1" rel="nofollow sponsored noopener" target="_blank">
+  <img border="0" width="468" height="60" alt="ダスキンの床マット" src="https://www20.a8.net/svt/bgt?aid=260317018218&wid=002&eno=01&mid=s00000008131003006000&mc=1">
+</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AZHWA+3LSJFE+1QQM+HWAG1" alt="">
+
+<a href="https://px.a8.net/svt/ejp?a8mat=4AZHWA+3PD522+1QQM+1NL9XT" rel="nofollow sponsored noopener" target="_blank">
+  <img border="0" width="468" height="60" alt="ダスキンの床掃除クリーナー" src="https://www29.a8.net/svt/bgt?aid=260317018224&wid=002&eno=01&mid=s00000008131010009000&mc=1">
+</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4AZHWA+3PD522+1QQM+1NL9XT" alt="">
