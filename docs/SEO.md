@@ -28,6 +28,24 @@
 - **サイトマップ**: `https://あなたのサイト/sitemap-index.xml` にアクセスしてXMLが表示される
 - **robots.txt**: `https://あなたのサイト/robots.txt` にアクセスしてSitemap行が含まれる
 
+### 1-3. 検索結果の「サイト名」が Vercel などになる場合
+
+`*.vercel.app` のような**ホスティングのサブドメイン**では、Google がドメインから推測して **「Vercel」** と表示しやすいです。
+
+**サイト側でできること（本プロジェクトで対応済み）**
+
+- 全ページの `<head>` に **`og:site_name`**（例：`お掃除ナビ`）
+- **`WebSite` 構造化データ**（`name`・`url`・`publisher` の `Organization`）
+
+**さらに効くことが多いこと**
+
+- **独自ドメイン**（例：`osouji-navi.example.com`）を取得し、Vercel に割り当てる  
+  → ブランド名と一致したサイト名が採用されやすくなります。
+
+**反映の目安**
+
+- デプロイ後、Search Console の **URL 検査**で再クロールをリクエストすると早まることがありますが、**数日〜数週間**かかることもあります。
+
 ---
 
 ## 2. Google Search Console への登録
