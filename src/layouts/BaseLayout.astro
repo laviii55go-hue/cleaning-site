@@ -151,6 +151,23 @@ const firebaseConfig = {
       )}
       <slot />
     </main>
+    <div class="duskin-ad-section">
+      <div class="duskin-ad-inner">
+        <p class="duskin-ad-label">床掃除におすすめ（提携広告）</p>
+        <p class="duskin-ad-disclosure"><small>当サイトはアフィリエイト広告（A8.net）を利用しています。</small></p>
+        <div class="duskin-ad-list">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4AZHWA+3LSJFE+1QQM+HWAG1" rel="nofollow sponsored noopener" target="_blank">
+            <img border="0" width="468" height="60" alt="ダスキンの床マット" src="https://www20.a8.net/svt/bgt?aid=260317018218&wid=002&eno=01&mid=s00000008131003006000&mc=1" />
+          </a>
+          <img class="duskin-tracking-pixel" border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AZHWA+3LSJFE+1QQM+HWAG1" alt="" />
+
+          <a href="https://px.a8.net/svt/ejp?a8mat=4AZHWA+3PD522+1QQM+1NL9XT" rel="nofollow sponsored noopener" target="_blank">
+            <img border="0" width="468" height="60" alt="ダスキンの床掃除クリーナー" src="https://www29.a8.net/svt/bgt?aid=260317018224&wid=002&eno=01&mid=s00000008131010009000&mc=1" />
+          </a>
+          <img class="duskin-tracking-pixel" border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4AZHWA+3PD522+1QQM+1NL9XT" alt="" />
+        </div>
+      </div>
+    </div>
     <div class="rakuten-footer">
       <div class="rakuten-footer-inner">
         <p class="rakuten-widget-label">楽天市場で関連商品を探す</p>
@@ -333,6 +350,47 @@ const firebaseConfig = {
     margin: 0 auto;
     padding: 0 1.5rem 2rem;
     text-align: center;
+  }
+
+  .duskin-ad-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem 1.5rem;
+    text-align: center;
+  }
+
+  .duskin-ad-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .duskin-ad-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .duskin-ad-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .duskin-ad-disclosure {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin: 0 0 0.75rem 0;
+    line-height: 1.5;
+  }
+
+  .duskin-tracking-pixel {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
   }
 
   .rakuten-footer-inner {
