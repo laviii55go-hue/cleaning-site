@@ -11,5 +11,7 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://cleaning-site-lac.ve
 
 export default defineConfig({
   site: siteUrl,
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    lastmod: new Date(),
+  })],
 });
