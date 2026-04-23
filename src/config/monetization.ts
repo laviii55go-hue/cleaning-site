@@ -18,7 +18,12 @@ export const adsense = {
 };
 
 // 楽天アフィリエイト
-const rakutenAffiliateId = String(import.meta.env.PUBLIC_RAKUTEN_AFFILIATE_ID ?? '').trim();
+// Vercel Hobby プラン 商用利用NG規約（Fair Use Guidelines）対応のため無効化（2026/04/23）
+// 環境変数 PUBLIC_RAKUTEN_AFFILIATE_ID の値を無視して空文字を強制する
+// → RakutenWidget.astro の showWidget=false で全ページ・全記事の楽天が非表示
+// 収益化見込みが立った段階で Vercel Pro 切替＋下記コメントアウト行の復活
+// const rakutenAffiliateId = String(import.meta.env.PUBLIC_RAKUTEN_AFFILIATE_ID ?? '').trim();
+const rakutenAffiliateId = '';
 
 export const affiliate = {
   disclosureRequired: true,
