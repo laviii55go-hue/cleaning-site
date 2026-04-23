@@ -10,16 +10,16 @@ stain: water-scale
 recommendedProducts:
   - name: 窓用クリーナー 三角モップ
     description: 窓ガラス・ガラスワイパー付き。延長ブラシで高所も掃除可能。水垢・油膜を落とす。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cc0678.e3b53e39.51cc0679.d969f97c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftanemaru%2F601099547227610%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cc0678.e3b53e39.51cc0679.d969f97c/?me_id=1428656&item_id=10052008&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ftanemaru%2Fcabinet%2F12024082%2F12055711%2F12055718%2Fimgrc0108132371.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: スクイージー
     description: 窓の水滴を一気に除去。仕上げに使うと拭き跡が残りにくい。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Froomy%2Fymz23mar09h01%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?me_id=1227333&item_id=10015009&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Froomy%2Fcabinet%2F500cart_all%2F500cart_11g%2Fp5-6%2Fymz7005-qp019-0_gt01.jpg%3F_ex%3D240x240&s=240x240&t=pict
+    url: ""
+    image: ""
   - name: マイクロファイバークロス
     description: 窓の拭き取りに。細かいホコリをしっかりキャッチ。水滴が残りにくい。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cc0461.ffacb365.51cc0463.833692a8/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmikagami%2F10000003%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cc0461.ffacb365.51cc0463.833692a8/?me_id=1395225&item_id=10000003&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmikagami%2Fcabinet%2F08027490%2Fimgrc0093783210.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## 窓の内側の掃除

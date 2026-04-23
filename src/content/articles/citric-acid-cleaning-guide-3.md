@@ -9,16 +9,16 @@ category: basic
 recommendedProducts:
   - name: 窓・鏡用スクイージー
     description: 仕上げの水切りで水垢予防。浴室・窓にも流用できる。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Froomy%2Fymz21jul02h16%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?me_id=1227333&item_id=10014891&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Froomy%2Fcabinet%2F500cart_all%2F500cart_11g%2Fp5-7%2Fymz7005-so01c-0_gt02.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: メラミンスポンジ（使用可否は素材次第）
     description: ツヤ面は傷つくことがあるため、使うなら目立たない場所でテスト。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb32d9.1620bf4e.51cb32da.6057fd54/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2F4903320045514%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb32d9.1620bf4e.51cb32da.6057fd54/?me_id=1261122&item_id=10928910&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frakuten24%2Fcabinet%2F514%2F4903320045514.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: 中性洗剤
     description: 水垢の前に「皮脂・石けんカス・油」を落とすとクエン酸が効きやすい。
-    url: https://hb.afl.rakuten.co.jp/ichiba/52405af6.185e13ef.52405af7.9a05a2f1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Firisplaza-r%2F7269456%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/52405af6.185e13ef.52405af7.9a05a2f1/?me_id=1358201&item_id=10159343&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Firisplaza-r%2Fcabinet%2F10984250%2F11032572%2Fimgrc0110116209.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## 場所別：クエン酸が効くポイント

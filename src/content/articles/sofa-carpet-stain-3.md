@@ -10,12 +10,12 @@ stain: stain
 recommendedProducts:
   - name: 重曹 1kg
     description: 油性シミや臭い取りに。ペーストでつけ置きや、振りかけて掃除機がけで消臭。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb4131.b6295c4f.51cb4132.be670b71/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftsuruha%2F10162289%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb4131.b6295c4f.51cb4132.be670b71/?me_id=1274827&item_id=10096569&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ftsuruha%2Fcabinet%2Fshouhin74%2F10162289.jpg%3F_ex%3D240x240&s=240x240&t=pict
+    url: ""
+    image: ""
   - name: 布用シミ取りスプレー
     description: ソファ・カーペットのちょっとしたシミに。常備しておくと安心。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51d26992.29e95b4a.51d26993.1e7e8c68/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbakaure-onlineshop%2Fk0382%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51d26992.29e95b4a.51d26993.1e7e8c68/?me_id=1319507&item_id=10001207&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fbakaure-onlineshop%2Fcabinet%2Fc03kitchen%2F11974401%2Fk0382.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## シミを防ぐ習慣

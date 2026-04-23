@@ -9,16 +9,16 @@ category: basic
 recommendedProducts:
   - name: クエン酸（粉末）
     description: 水垢・石けんカス対策の定番。食品グレードでも掃除用でもOK（用途は分けると安心）。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb32d9.1620bf4e.51cb32da.6057fd54/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2F561220%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb32d9.1620bf4e.51cb32da.6057fd54/?me_id=1261122&item_id=11177358&pc=https%3A%2F%2Fimage.rakuten.co.jp%2Frakuten24%2Fcabinet%2F220%2F561220.jpg%3F_ex%3D240x240&s=240x240&t=pict
+    url: ""
+    image: ""
   - name: スプレーボトル（500ml前後）
     description: クエン酸水を作って常備。ラベルを貼って中身を明記すると安全。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Froomy%2Fymz21jul02h20%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?me_id=1227333&item_id=10012269&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Froomy%2Fcabinet%2F500cart_all%2F500cart_11g%2Fp5-5%2Fymz1200-ot034-0_gt01.jpg%3F_ex%3D240x240&s=240x240&t=pict
+    url: ""
+    image: ""
   - name: マイクロファイバークロス
     description: 仕上げ拭きに。拭き筋が残りにくい。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51d253c5.3001412c.51d253c6.8d6c2ca7/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fshopmarna%2Fx135%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51d253c5.3001412c.51d253c6.8d6c2ca7/?me_id=1251218&item_id=10006573&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fshopmarna%2Fcabinet%2Fitem_top%2Fx3%2Fx135.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ここでは「クエン酸スプレー」「クエン酸パック（湿布）」の2つを、手順として固定化します。

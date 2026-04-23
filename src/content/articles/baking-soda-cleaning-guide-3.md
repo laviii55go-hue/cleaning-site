@@ -9,16 +9,16 @@ category: basic
 recommendedProducts:
   - name: ゴム手袋
     description: 手荒れ防止。キッチン掃除の標準装備。
-    url: https://hb.afl.rakuten.co.jp/ichiba/52405764.03c4b01f.52405765.fe8ffb84/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fflora-s%2Fuc-1204%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/52405764.03c4b01f.52405765.fe8ffb84/?me_id=1373999&item_id=10001605&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fflora-s%2Fcabinet%2Fimage%2Fuc-1204%2Fuc-1204_b.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: マイクロファイバークロス
     description: 拭き取り用。重曹の白残りを防ぐために水拭きでも使う。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51d253c5.3001412c.51d253c6.8d6c2ca7/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fshopmarna%2Fx135%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51d253c5.3001412c.51d253c6.8d6c2ca7/?me_id=1251218&item_id=10006573&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fshopmarna%2Fcabinet%2Fitem_top%2Fx3%2Fx135.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: 消臭剤（重曹以外の選択肢）
     description: 靴箱などは専用消臭剤が手軽。重曹と併用するのもあり。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb32d9.1620bf4e.51cb32da.6057fd54/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2F98216%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb32d9.1620bf4e.51cb32da.6057fd54/?me_id=1261122&item_id=11015143&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frakuten24%2Fcabinet%2F216%2F98216.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## NG素材（重曹を避けた方がいいことがある）

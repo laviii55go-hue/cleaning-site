@@ -9,16 +9,16 @@ category: basic
 recommendedProducts:
   - name: 重曹（粉末）
     description: 油汚れ・軽い焦げ・消臭に。掃除用として常備しやすい。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb4131.b6295c4f.51cb4132.be670b71/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftsuruha%2F10162289%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb4131.b6295c4f.51cb4132.be670b71/?me_id=1274827&item_id=10096569&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ftsuruha%2Fcabinet%2Fshouhin74%2F10162289.jpg%3F_ex%3D240x240&s=240x240&t=pict
+    url: ""
+    image: ""
   - name: スプレーボトル（500ml前後）
     description: 重曹水を作って常備。中身を明記して保管。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Froomy%2Fymz21jul02h20%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb3a81.d6362375.51cb3a82.4f1d5dd2/?me_id=1227333&item_id=10012269&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Froomy%2Fcabinet%2F500cart_all%2F500cart_11g%2Fp5-5%2Fymz1200-ot034-0_gt01.jpg%3F_ex%3D240x240&s=240x240&t=pict
+    url: ""
+    image: ""
   - name: スポンジ/ブラシ（研磨しないタイプ）
     description: コーティング面を傷つけにくいスポンジが安心。
-    url: https://hb.afl.rakuten.co.jp/ichiba/52406546.b753f087.52406547.a7b77631/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fstrade-web%2Fl4502016%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/52406546.b753f087.52406547.a7b77631/?me_id=1245653&item_id=10065587&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fstrade-web%2Fcabinet%2Faisen%2F4901105502016.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## 重曹水（スプレー）の作り方と使い方

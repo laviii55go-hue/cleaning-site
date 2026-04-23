@@ -11,16 +11,16 @@ season: summer
 recommendedProducts:
   - name: エアコンスキマキーレー
     description: 吹き出し口・ルーバーのすき間に届くモップ。黒カビ・ホコリを絡め取る。年末大掃除にも。
-    url: https://hb.afl.rakuten.co.jp/ichiba/36aa5de7.f708acbb.36aa5de8.4921b4af/?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2Ffb47cf861dec41abd7212d7d10b6fed4%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjoxLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cbfed8.5a6510e9.51cbfed9.f6151a5d/?me_id=1244025&item_id=10007406&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fs-zakka-show%2Fcabinet%2Fa%2F08836651%2F24480.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: エアコンクリーナーAG 徹底洗浄 消臭プラス
     description: エアコン内部のカビ・臭いを除去。電解水タイプで洗浄後すぐ使用可能。
-    url: https://hb.afl.rakuten.co.jp/ichiba/36aa5de7.f708acbb.36aa5de8.4921b4af/?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F91376d9cfc7eaf417b0fc6ba2392a4a8%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjoxLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cc032f.ba946b11.51cc0330.b10950a7/?me_id=1202604&item_id=10000558&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fcopa%2Fcabinet%2F00239869%2Fag-plus%2Fkch-003ag_r.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: マイクロファイバークロス
     description: 吹き出し口やルーバーを拭くのに。細かいホコリをしっかりキャッチ。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cc0461.ffacb365.51cc0463.833692a8/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmikagami%2F10000003%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cc0461.ffacb365.51cc0463.833692a8/?me_id=1395225&item_id=10000003&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmikagami%2Fcabinet%2F08027490%2Fimgrc0093783210.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## フィルターの掃除

@@ -9,16 +9,16 @@ category: basic
 recommendedProducts:
   - name: 排水口用ブラシ
     description: 排水口パーツの溝・縁のヌメリをこすり落とすのに便利。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb32d9.1620bf4e.51cb32da.6057fd54/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2F4901065555343%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb32d9.1620bf4e.51cb32da.6057fd54/?me_id=1261122&item_id=11303316&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frakuten24%2Fcabinet%2F343%2F4901065555343.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: メジャースプーン（計量）
     description: 分量を毎回ブレさせないための計量。粉末洗剤の計量にも使える。
-    url: https://hb.afl.rakuten.co.jp/ichiba/524059a3.4921349e.524059a4.61dafa6c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Flivingut%2F491626%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/524059a3.4921349e.524059a4.61dafa6c/?me_id=1222208&item_id=10226897&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Flivingut%2Fcabinet%2Fmaker_inomata1%2F491626.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: 使い捨てスポンジ（またはブラシ）
     description: つけ置き後のこすり洗い用。衛生的に使い切れるタイプが楽。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb32d9.1620bf4e.51cb32da.6057fd54/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2F4986614262224%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb32d9.1620bf4e.51cb32da.6057fd54/?me_id=1261122&item_id=11233392&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frakuten24%2Fcabinet%2F224%2F4986614262224.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## 具体例：どこに使うと効果が出やすい？

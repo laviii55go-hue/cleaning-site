@@ -10,12 +10,12 @@ stain: dust
 recommendedProducts:
   - name: 重曹 1kg
     description: 布団の消臭に。小袋に入れて押入れや布団下に置くだけでも効果的。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb4131.b6295c4f.51cb4132.be670b71/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftsuruha%2F10162289%2F&link_type=pict&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0Iiwic2l6ZSI6IjI0MHgyNDAiLCJuYW0iOjEsIm5hbXAiOiJyaWdodCIsImNvbSI6MSwiY29tcCI6ImRvd24iLCJwcmljZSI6MCwiYm9yIjoxLCJjb2wiOjEsImJidG4iOjEsInByb2QiOjAsImFtcCI6ZmFsc2V9
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb4131.b6295c4f.51cb4132.be670b71/?me_id=1274827&item_id=10096569&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ftsuruha%2Fcabinet%2Fshouhin74%2F10162289.jpg%3F_ex%3D240x240&s=240x240&t=pict
+    url: ""
+    image: ""
   - name: 除湿剤
     description: 押入れ・布団下の湿気対策。ダニ・カビ予防に。
-    url: https://hb.afl.rakuten.co.jp/ichiba/51cb32d9.1620bf4e.51cb32da.6057fd54/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frakuten24%2F34258%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/51cb32d9.1620bf4e.51cb32da.6057fd54/?me_id=1261122&item_id=10842835&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Frakuten24%2Fcabinet%2F258%2F34258.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ## 日々の習慣でホコリ・ダニを減らす

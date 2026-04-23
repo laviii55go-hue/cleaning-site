@@ -9,16 +9,16 @@ category: basic
 recommendedProducts:
   - name: 酸素系漂白剤（過炭酸ナトリウム）
     description: つけ置き掃除の主役。用途に合う濃度の目安が書かれた商品が扱いやすい。
-    url: https://hb.afl.rakuten.co.jp/ichiba/524057f6.772960df.524057f7.5f03f402/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffines-f%2F4901797033164%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/524057f6.772960df.524057f7.5f03f402/?me_id=1322371&item_id=10011175&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ffines-f%2Fcabinet%2Fimgrc0069974836.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: つけ置き用バケツ（フタ付き）
     description: 泡が出るので少し大きめが安心。フタ付きだと臭いも抑えやすい。
-    url: https://hb.afl.rakuten.co.jp/ichiba/5240587f.b5fc1bd7.52405880.311c19b2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fordy%2F1832%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/5240587f.b5fc1bd7.52405880.311c19b2/?me_id=1240422&item_id=10013295&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fordy%2Fcabinet%2Fyama%2Fthum%2Fym-1833_00a.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
   - name: ゴム手袋（厚手）
     description: 肌荒れ防止。熱めの湯を使うこともあるため厚手が便利。
-    url: https://hb.afl.rakuten.co.jp/ichiba/52405764.03c4b01f.52405765.fe8ffb84/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fflora-s%2Fuc-1204%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D
-    image: https://hbb.afl.rakuten.co.jp/hgb/52405764.03c4b01f.52405765.fe8ffb84/?me_id=1373999&item_id=10001605&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fflora-s%2Fcabinet%2Fimage%2Fuc-1204%2Fuc-1204_b.jpg%3F_ex%3D240x240&s=240x240&t=picttext
+    url: ""
+    image: ""
 ---
 
 ここでは、酸素系漂白剤の**つけ置き掃除の基本手順**と、よくある失敗の回避ポイントをまとめます。
