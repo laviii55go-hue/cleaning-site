@@ -103,9 +103,14 @@ if (entry.data.updatedDate) {
         </p>
       )}
 
+      {/* Vercel Hobby プラン 商用利用NG規約対応のため「この作業で使えるおすすめグッズ」セクション全体を非表示（2026/04/23） */}
+      {/* 楽天アフィリンク前提の商品カードエリアで、url/image 空化後は商品写真が欠落し UX が破綻するためエリアごと停止 */}
+      {/* 収益化見込みが立った段階で Vercel Pro 切替＋下記コメントアウト解除で復活 */}
+      {/*
       {(part === 2 || part === 3) && (
         <AffiliatePlaceholder title="この作業で使えるおすすめグッズ" products={recommendedProducts} items={3} />
       )}
+      */}
 
       <ArticlePagination slug={slug} currentPart={part} totalParts={totalParts} title={title} />
 
